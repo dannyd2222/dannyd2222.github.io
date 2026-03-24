@@ -1,0 +1,52 @@
+# Builds the static Next.js site and publishes it to GitHub Pages.
+# One-time repo setup: Settings → Pages → Build and deployment → Source: GitHub Actions.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      # Must match next.config.js: distDir is `build`, so the static export is here.
+      # (Next’s default without distDir is `out/` — templates often use path: out; that causes
+      # "tar: out: Cannot open: No such file or directory" for this repo.)
+      - name: Verify static export output
+        run: test -f build/index.html || (echo "::error::build/index.html missing — check next build and distDir" && exit 1)
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
