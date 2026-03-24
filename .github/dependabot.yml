@@ -1,0 +1,7 @@
+# Opens PRs when GitHub updates action tags (e.g. new upload-pages-artifact after Node 24 fix).
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

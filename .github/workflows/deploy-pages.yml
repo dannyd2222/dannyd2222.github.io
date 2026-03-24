@@ -1,5 +1,14 @@
 # Builds the static Next.js site and publishes it to GitHub Pages.
 # One-time repo setup: Settings → Pages → Build and deployment → Source: GitHub Actions.
+#
+# Node in two places:
+# - setup-node below: version used to run `npm ci` / `npm run build` (your app).
+# - `upload-pages-artifact` embeds `upload-artifact` v4.6.2 (Node 20). Upstream fix is tracked in:
+#   https://github.com/actions/upload-pages-artifact/pull/139
+#   https://github.com/actions/upload-pages-artifact/issues/138
+#   When a release notes “Node 24” / bumps embedded upload-artifact: try removing
+#   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24 below and re-run the workflow to confirm warnings are gone.
+#   Deprecation context: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
 
 name: Deploy to GitHub Pages
 
@@ -7,6 +16,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 permissions:
   contents: read
@@ -25,7 +37,7 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "22"
           cache: npm
 
       - run: npm ci

@@ -1,6 +1,6 @@
 {
   "fullName": "Daniele Dalle Nogare",
-  "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczPG2PsXOHSuOv70cCCQWp5QRocsJm23ocCVgLXrECrLHXFEQVIA9o_AxkrETfWoVgS99l6KLn4yI2No5JQ6kBfcsm4LoM53SPEUQHdDrNCgVYSGOutsA4jAW6u_f2xtduuM2vRK9QIUG2kaBLz1i-Jp-g=w1199-h959-s-no-gm",
+  "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczPG2PsXOHSuOv70cCCQWp5QRocsJm23ocCVgLXrECrLHXFEQVIA9o_AxkrETfWoVgS99l6KLn4yI2No5JQ6kBfcsm4LoM53SPEUQHdDrNCgVYSGOutsA4jAW6u_f2xtduuM2vRK9QIUG2kaBLz1i-Jp-g",
   "role": "Full Stack Developer & Solutions Architect",
   "webSite": "https://dannyd2222.github.io/",
   "companyName": "danieledallenogare",
@@ -16,6 +16,7 @@
     "Git",
     "Problem solving",
     "Algorithms",
+    "Architecture",
     "TDD",
     "DDD"
   ],
