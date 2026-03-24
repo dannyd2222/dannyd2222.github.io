@@ -1,242 +1,145 @@
 {
   "fullName": "Daniele Dalle Nogare",
-  "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczPG2PsXOHSuOv70cCCQWp5QRocsJm23ocCVgLXrECrLHXFEQVIA9o_AxkrETfWoVgS99l6KLn4yI2No5JQ6kBfcsm4LoM53SPEUQHdDrNCgVYSGOutsA4jAW6u_f2xtduuM2vRK9QIUG2kaBLz1i-Jp-g",
-  "role": "Full Stack Developer & Solutions Architect",
+  "imageUrl": "/images/profile.jpg",
+  "role": "Senior Full-Stack Developer · Consulente freelance · Data & Cloud (AWS)",
   "webSite": "https://dannyd2222.github.io/",
   "companyName": "danieledallenogare",
   "techStaff": [
-    "Javascript",
-    "Typescript",
-    "React",
-    "NodeJS",
+    "TypeScript",
+    "JavaScript",
     "Python",
+    "Java",
+    "Node.js",
+    "React",
+    "Vue.js",
+    "REST API",
+    "OAuth2",
+    "AWS",
+    "Docker",
+    "Git",
+    "GitHub Actions",
+    "PostgreSQL",
     "MySQL",
     "MongoDB",
-    "Redux",
-    "Git",
-    "Problem solving",
-    "Algorithms",
+    "Apache Spark",
+    "Pandas",
+    "ETL",
+    "Data analysis",
+    "Playwright",
+    "Jest",
+    "Pytest",
     "Architecture",
-    "TDD",
-    "DDD"
+    "Data visualization"
   ],
   "experience": [
     {
-      "title": "Full Stack Developer & Solutions Architect",
-      "place": "Weborama",
-      "placeUrl": "https://weborama.com/it/su-di-noi/",
-      "image": "https://lh3.googleusercontent.com/pw/AJFCJaVA2n3sIsQ_QlkFLbqRnOzLAdu0LhkhhyL_SiSWY7u9gTpfst7Lh81WVKmVda_0lemcUjDMr---6YD2OYQIKhhcbGpCEtdMc9kr3MvJBWVcmKO45xYUCy9V4mjpmkV7gZV3oEkhIn1pLwV146F8nK_KBw",
-      "timePeriod": "03/2022 - actually",
+      "title": "Senior Full-Stack Developer",
+      "place": "LAIF",
+      "placeUrl": "https://laifgroup.com/",
+      "image": "/images/laif-logo.png",
+      "timePeriod": "09/2024 - in corso",
       "contentParagraphs": [
-        "Lavoro a stretto contatto con i project manager per acquisire una perfetta consapevolezza delle aspettative e dei limiti dei clienti prima di avviare un progetto di sviluppo. Analizzo e valuto periodicamente nuove tecnologie per migliorare l'infrastruttura esistente."
+        "Sviluppo feature full-stack e definizione architettura moduli (TypeScript/Node). Integrazione API e autenticazione OAuth2. Miglioramenti su performance e migrazioni.",
+        "CI/CD e ambienti Docker. Gestione e standardizzazione suite di test E2E (Playwright). Contributo a design system e incremento coverage per qualità e coerenza del codice.",
+        "Stack: TypeScript, Python, Node.js, Docker, GitHub Actions, Playwright, Just, AWS."
+      ]
+    },
+    {
+      "title": "Trainer (Web Developer Full-Stack / Data Analyst & Data Engineer)",
+      "place": "Refresh Academy",
+      "placeUrl": "",
+      "image": "/images/logo-refresh.webp",
+      "timePeriod": "12/2024 - 07/2025",
+      "contentParagraphs": [
+        "Trainer in 2 percorsi (350 ore): Web Developer Full-Stack e Data Analyst & Data Engineer.",
+        "Definizione del programma del corso, organizzazione lezioni ed esercitazioni, revisione elaborati e mentoring su workflow e best practice."
+      ]
+    },
+    {
+      "title": "Data Architecture & Visualization Developer",
+      "place": "Ammagamma",
+      "placeUrl": "https://www.ammagamma.com/",
+      "image": "/images/ammagamma-logo.jpg",
+      "timePeriod": "05/2023 - 05/2024",
+      "contentParagraphs": [
+        "Progettazione e implementazione di architetture dati scalabili per esigenze analitiche. Collaborazione con PM e Data Scientist per pipeline dati e fruizione coerente.",
+        "Gestione e ottimizzazione dell'infrastruttura cloud per elaborazione e visualizzazione (efficienza, scalabilità, sicurezza)."
+      ]
+    },
+    {
+      "title": "Full Stack Developer & Solutions Architect",
+      "place": "Weborama Italia",
+      "placeUrl": "https://weborama.com/it/su-di-noi/",
+      "image": "/images/logo-weborama.jpg",
+      "timePeriod": "02/2022 - 04/2023",
+      "contentParagraphs": [
+        "Raccolta requisiti e allineamento con PM e clienti fino alla consegna della soluzione. Valutazione tecnologie e miglioramento continuo di infrastruttura e processi di sviluppo.",
+        "Stime tempi e costi. Supporto all'organizzazione dei flussi tra team.",
+        "Ambiti / stack: ETL / Data Analysis / ML (Python, MongoDB, Apache Spark, Pandas, AWS Step Functions, AWS Lambda, EMR); API (Python, MongoDB, AWS API Gateway, AWS Lambda); DevOps (Bash, Unix, Apache NiFi, Ansible, Node.js, Nginx, Git); Web (HTML, CSS, JavaScript, Ajax, Bootstrap, jQuery, Backbone.js)."
       ]
     },
     {
       "title": "Data Visualization Specialist",
-      "place": "Weborama",
+      "place": "Weborama Italia",
       "placeUrl": "https://weborama.com/it/su-di-noi/",
-      "image": "https://lh3.googleusercontent.com/pw/AJFCJaVA2n3sIsQ_QlkFLbqRnOzLAdu0LhkhhyL_SiSWY7u9gTpfst7Lh81WVKmVda_0lemcUjDMr---6YD2OYQIKhhcbGpCEtdMc9kr3MvJBWVcmKO45xYUCy9V4mjpmkV7gZV3oEkhIn1pLwV146F8nK_KBw",
-      "timePeriod": "07/2020 - 02/2022",
+      "image": "/images/logo-weborama.jpg",
+      "timePeriod": "06/2020 - 02/2022",
       "contentParagraphs": [
-        "Con il cambio di core-business aziendale, con focus sulla Data Analysis, ho sfruttato le mie competetnze per specializzarmi nella Data Visualization. Ho progettato e implementato interfacce di dashborading sfruttando principalmente il framework ReactJs."
+        "Sviluppo dashboard e data product per analisi su big data.",
+        "Selezione framework e librerie per manutenibilità, personalizzazione e supporto community.",
+        "Introduzione di unit test automatici (Jest) e collaborazione con Data Engineering su flussi automatizzati."
       ]
     },
     {
       "title": "Front-end Developer & Rich Media Support",
-      "place": "Weborama",
+      "place": "Weborama Italia",
       "placeUrl": "https://weborama.com/it/su-di-noi/",
-      "image": "https://lh3.googleusercontent.com/pw/AJFCJaVA2n3sIsQ_QlkFLbqRnOzLAdu0LhkhhyL_SiSWY7u9gTpfst7Lh81WVKmVda_0lemcUjDMr---6YD2OYQIKhhcbGpCEtdMc9kr3MvJBWVcmKO45xYUCy9V4mjpmkV7gZV3oEkhIn1pLwV146F8nK_KBw",
-      "timePeriod": "04/2015 - 06/2020",
+      "image": "/images/logo-weborama.jpg",
+      "timePeriod": "03/2015 - 06/2020",
       "contentParagraphs": [
-        "Ho avuto modo di contribuire allo sviluppo di piattaforme online dedicate ai clienti e di tool interni oltre che di nuovi Ad-banner statici ed evoluti. Inoltre ho svolto attività diediting di video, audio e immagini per l’advertising online."
+        "Sviluppo formati statici e rich media, piattaforme e tool interni (HTML/CSS/JavaScript).",
+        "Supporto tecnico a clienti (Centri Media, Publisher, Agenzie creative). Editing di asset video e immagini per advertising online."
       ]
-    },
+    }
+  ],
+  "education": [
+    {
+      "title": "Laurea triennale in Informatica",
+      "place": "Università degli Studi di Palermo",
+      "placeUrl": "https://www.unipa.it/",
+      "image": "/images/logo-unipa.jpg",
+      "timePeriod": "09/2010 - 03/2015",
+      "contentParagraphs": [
+        "Voto: 93/110.",
+        "Tesi: Un tool per la progettazione Goal-Oriented a partire dall'ontologia del problema."
+      ]
+    }
+  ],
+  "researchProjects": [
     {
       "title": "Java Developer",
       "place": "ICAR-CNR",
       "placeUrl": "https://www.icar.cnr.it/chi-siamo/",
-      "image": "https://lh3.googleusercontent.com/pw/AJFCJaUd_mmLcA2i0Bhs9v7zwnpjLnP4uhU93a1ELGLTrlbDmf5VXzBVaSZQXQDvjdhcGRW5x8an40Mp4PFg9d08W9Dnq6mWEATuu8KhDzdbC3_Zjyf4L-wHV9LpPZUoei6rf8AQkCnLJZaq6BOkSTb8N7EsHQ",
+      "image": "/images/logo-icar.jpg",
       "timePeriod": "06/2013 - 10/2014",
       "contentParagraphs": [
         "Sono stato inserito in un gruppo di ricerca con l'obiettivo di sviluppare un case tool che, mediante plug-in Eclipse, desse la possibilità di progettare software Agent-Oriented secondo la metodologia PASSI (Process for Agent Societies Specification and Implementation)."
       ]
     }
   ],
-  "education": [
+  "publications": [
     {
-      "title": "Laurea 1° livello in Informatica",
-      "place": "Università degli studi di Palermo",
-      "placeUrl": "https://www.unipa.it/",
-      "image": "https://lh3.googleusercontent.com/pw/AP1GczPG2PsXOHSuOv70cCCQWp5QRocsJm23ocCVgLXrECrLHXFEQVIA9o_AxkrETfWoVgS99l6KLn4yI2No5JQ6kBfcsm4LoM53SPEUQHdDrNCgVYSGOutsA4jAW6u_f2xtduuM2vRK9QIUG2kaBLz1i-Jp-g",
-      "timePeriod": "10/2010 - 03/2015"
-    }
-  ],
-  "projects": [
-    {
-      "title": "Rulyotano.Math",
-      "github": "https://github.com/rulyotano/Rulyotano.Math",
-      "nuget": "https://www.nuget.org/packages/Rulyotano.Math",
+      "title": "GIMT: A Tool for Ontology and Goal Modeling in BDI Multi-Agent Design",
+      "place": "WOA 2014",
+      "placeUrl": "",
+      "image": "/images/logo-icar.jpg",
+      "timePeriod": "2014",
       "contentParagraphs": [
-        "Dotnet helper libraries. Currently, the most interesting is a helper to interpolate points by using Bezier curves."
-      ],
-      "image": "https://github.com/rulyotano/wpf-bezier-interpolation/blob/master/interpolation-bezier-curves.gif?raw=true"
-    },
-    {
-      "title": "Tree Extended",
-      "github": "https://github.com/rulyotano/tree-extended",
-      "npm": "https://www.npmjs.com/package/tree-extended",
-      "contentParagraphs": [
-        "A npm library that we can use to get directory tries in a custom way. Also implemented a VsCode extension to do it easily."
-      ],
-      "image": "https://lh3.googleusercontent.com/pw/AL9nZEUSX7FjgXCpO8wkjBFnfAAB9OTNcBq4UMU0UFe4IV9d9JZ7e-SQxB2lt82kDxdA7gWoRUrJR7oSlFAesjLTYf8okYRNxHgnGGoBycg_0WKBrBqOI5Notap3jdH8wmAnNttC-AODSXaIPKqlYH1_OCLAJw"
-    },
-    {
-      "title": "My MinesSweeper! 😎",
-      "github": "https://github.com/rulyotano/minesweeper",
-      "web": "https://webminesweeper.azurewebsites.net/mines-sweeper",
-      "contentParagraphs": [
-        "Just a fun project, but it is a good example of how to use ReactJs + Redux pattern. Also, I play it a lot when I'm bored."
-      ],
-      "image": "https://github.com/rulyotano/minesweeper/raw/master/images/mineminesweeper-redux.gif?raw=true"
-    },
-    {
-      "title": "Mimacom Challenge 💪",
-      "github": "https://github.com/rulyotano/mimacom_react_task",
-      "web": "https://mimacom-shop.azurewebsites.net/",
-      "contentParagraphs": [
-        "This project is challenge to enter into Mimacom company as a frontend developer. It can help as a React + Redux example."
-      ],
-      "image": "https://lh3.googleusercontent.com/pw/AL9nZEXxzGOG3KrbbY7P5JcE2m_dmX88eQYVcb7rK64GofErMwlI86c5zVO68de4qTqV6nhQ0Ig3_Y0zctpYk5Cz67y38AuwUIxAXE6lBQNx-nhsE4BaDIL2-1xd4Q_uj7Nb82kJswXrMId3p_GNYDbqT8N0Nw"
-    },
-    {
-      "title": "Mui Profile (this site!)",
-      "github": "https://github.com/dannyd2222/dannyd2222.github.io",
-      "web": "https://dannyd2222.github.io/",
-      "contentParagraphs": [
-        "Done using React + Next.js + Material UI; this repository is the source of this site. It is deployed to GitHub Pages (e.g. via push to main and the Actions workflow)."
-      ],
-      "image": "https://lh3.googleusercontent.com/pw/AL9nZEUeArJGojV2AZAq21XL5vILKxpUYcXUpq7VgUn2_EKqajaYWlODLFHX0RI4T690hH7cs4D36XvQsHxg5OI1MRG8X6dmSTNTInvHM4FhnzwO3jfY84r9Fcc7TES0_24pe1XL4YqQY2JIujXr62Z9fnpkMg"
-    },
-    {
-      "title": "Othello/Reversi game with AI players",
-      "github": "https://github.com/rulyotano/othello-reversi-wpf",
-      "contentParagraphs": [
-        "This was a project for the AI course in the University: creating AI players to play Othello game. We did a tournament with all the students player. This is the winner!"
-      ],
-      "image": "https://github.com/rulyotano/othello-reversi-wpf/raw/master/otello-reversi-game.gif?raw=true"
-    },
-    {
-      "title": "WPF draggable animated panel",
-      "github": "https://github.com/rulyotano/wpf-drag-animated-panel",
-      "contentParagraphs": [
-        "Back then, Safari web browser had a similar panel and I wanted to have it in WPF."
-      ],
-      "image": "https://github.com/rulyotano/wpf-drag-animated-panel/raw/master/grag-animated-panel.gif?raw=true"
-    }
-  ],
-  "articles": [
-    {
-      "title": "Interpolate 2D points, usign Bezier curves in WPF",
-      "web": "https://www.codeproject.com/Articles/769055/Interpolate-D-points-usign-Bezier-curves-in-WPF",
-      "image": "https://lh3.googleusercontent.com/pw/AL9nZEXBNW-hhOomJPN6cHlZyBMLOwNBVjhkFt9GTLNIwK7qGaJXafhDU0QaTjwrYGIIWNogCRk50CbAGAqpc-WadU86M7V6rOM0E3ODYWGQ0-y9FQCH_VdX-97tnXcjnlDOzHHyKX1_q9ewjN56Syn4jclRRw",
-      "contentParagraphs": [
-        "Do you know how to do, from a list of points to get a curve line that pass through all of them? In this article we explain how to do it by using Bezier Curves."
-      ]
-    },
-    {
-      "title": "Tree-Extended, a tool to get custom directories trees",
-      "web": "https://medium.com/@rulyotano/tree-extended-a-tool-to-get-custom-directories-trees-3dea42ebf407",
-      "image": "https://lh3.googleusercontent.com/pw/AL9nZEWMmO1c93JC_i2iDghbTmCBUHpiLt1x5zux91CVjaTSG4sm7Z2TBY12qsQsMtPFALhxXFg5NSpoBmXw885sUJvB-Rf83l4hiI_T5mI2riMyttYdvMnaur5ntx1c_TCfywfNG0dDNJZaekpWY6IIt8b76g",
-      "contentParagraphs": [
-        "Here we explain how to use a tool developed to match the needs to document projects directories in a very customized way. I created a command line tool and also, a VsCode extension in order to do that."
-      ]
-    },
-    {
-      "title": "Get Your Personal Website for Free: Create it with ReactJs",
-      "web": "https://medium.com/@rulyotano/get-your-personal-website-for-free-create-it-with-reactjs-b7e3c3c874b4",
-      "image": "https://lh3.googleusercontent.com/pw/AL9nZEUUQh8p5f6W6trJAeERKMoZjpSi9dA46jLobm7YB9LzJWjR8mDRJm7v-DYl7J03RHWDuJIBqrsyCmbtnoQtoYlzoFvn69wEka9kQUqtLJw4gvYx73lf_UIxpTy0qTAFDdaQz-Eh1szy57KvZKqKoxjBhA",
-      "contentParagraphs": [
-        "I want to show how create for free a personal webpage by using GitHub Pages + ReactJs + NextJs + Material UI."
+        "Cossentino, M., Dalle Nogare, D., Giancarlo, R., Lodato, C., Lopes, S., Ribino, P., … & Seidita, V. (2014). GIMT: A Tool for Ontology and Goal Modeling in BDI Multi-Agent Design. In WOA 2014."
       ]
     }
   ],
-  "recommendedBooks": [
-    {
-      "title": "Clean Code",
-      "author": "Robert C. Martin",
-      "web": "https://www.goodreads.com/book/show/3735293-clean-code",
-      "image": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1436202607l/3735293._SX318_.jpg",
-      "contentParagraphs": [
-        "This gives us a lot of good tips to write better code. We need to code thinking others will read it.",
-        "I liked this book a lot. I tend to use these advices in the day by day coding, not all of them, you can pick the ones you find useful."
-      ]
-    },
-    {
-      "title": "Clean Architecture",
-      "author": "Robert C. Martin",
-      "web": "https://www.goodreads.com/book/show/18043011-clean-architecture",
-      "image": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1471680093l/18043011._SX318_.jpg",
-      "contentParagraphs": [
-        "This book is like an extension of Clean Code. It is like same principles applied to software architecture."
-      ]
-    },
-    {
-      "title": ".NET Microservices: Architecture for Containerized .NET Applications",
-      "author": "Cesar de la Torre, Bill Wagner, Mike Rousos",
-      "web": "https://docs.microsoft.com/en-us/dotnet/architecture/microservices/",
-      "image": "https://learn.microsoft.com/en-us/dotnet/architecture/microservices/media/cover-large.png",
-      "contentParagraphs": [
-        "Good book to get introduced into the microservices world. We can learn by actually coding a microservice.",
-        "We can find a lot of useful references here to dig into this world."
-      ]
-    },
-    {
-      "title": "Cracking the Coding Interview",
-      "author": "Gayle Laakmann McDowell",
-      "web": "http://www.crackingthecodinginterview.com",
-      "image": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1597774525l/55014663._SY475_.jpg",
-      "contentParagraphs": [
-        "Not only to prepare for coding interviews. This one teach you a lot of things that every software engineer needs to know."
-      ]
-    },
-    {
-      "title": "Domain-Driven Design Distilled",
-      "author": "Vaughn Vernon",
-      "web": "https://www.goodreads.com/book/show/28602719-domain-driven-design-distilled",
-      "image": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1453681660l/28602719.jpg",
-      "contentParagraphs": [
-        "'The book' to learn DDD."
-      ]
-    },
-    {
-      "title": "Designing Data-Intensive Applications",
-      "author": "Martin Kleppmann",
-      "web": "https://www.goodreads.com/book/show/23463279-designing-data-intensive-applications",
-      "image": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1415816873l/23463279.jpg",
-      "contentParagraphs": [
-        "A long book, but this is like a mandatory reference for some software architecture sections.",
-        "You can find how different types of DBs are implemented or how distributed system manage replication."
-      ]
-    },
-    {
-      "title": "System Design Interview - An insider's guide",
-      "author": "Alex Xu",
-      "web": "https://www.goodreads.com/book/show/54109255-system-design-interview-an-insider-s-guide",
-      "image": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1592265780l/54109255._SY475_.jpg",
-      "contentParagraphs": [
-        "Very good to prepare your self to coding interviews's system design questions. But also have I have learned a lot of things regarding to software architecture and how big systems works.",
-        "Also, the references you can find here are gold."
-      ]
-    },
-    {
-      "title": "System Design Interview - An insider's guide: Volume 2",
-      "author": "Alex Xu, Sahn Lam",
-      "web": "https://www.goodreads.com/book/show/60631342-system-design-interview-an-insider-s-guide",
-      "image": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1647464389l/60631342._SX318_.jpg",
-      "contentParagraphs": [
-        "An extension of volume 1 with some more examples. As the first volume, this is very good. This one continues teaching us a lot of amazing stuffs.",
-        "Again, follow the references."
-      ]
-    }
-  ]
+  "projects": [],
+  "articles": [],
+  "recommendedBooks": []
 }

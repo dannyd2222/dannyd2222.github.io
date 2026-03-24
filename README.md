@@ -1,12 +1,12 @@
 # dannyd2222.github.io
 
-Sorgente del sito personale pubblicato su **GitHub Pages** all’URL [`https://dannyd2222.github.io/`](https://dannyd2222.github.io/) (repository utente `username.github.io`, senza sottopath `/nome-repo`).
+Source for the personal site published on **GitHub Pages** at [`https://dannyd2222.github.io/`](https://dannyd2222.github.io/).
 
 ---
 
 ## Repository
 
-Clone del repository:
+Clone the repository:
 
 ```
 git@github.com:dannyd2222/dannyd2222.github.io.git
@@ -14,7 +14,7 @@ git@github.com:dannyd2222/dannyd2222.github.io.git
 
 ## What's included
 
-Struttura del progetto:
+Project structure:
 
 ```
 dannyd2222.github.io
@@ -23,7 +23,9 @@ dannyd2222.github.io
 ├── package.json
 ├── package-lock.json
 ├── public
-│   └── favicon.ico
+│   ├── favicon.ico
+│   └── images
+│       └── … (logos, profile photos, SVG placeholders)
 ├── README.md
 ├── src
 │   ├── components
@@ -52,9 +54,9 @@ dannyd2222.github.io
 │   ├── theme
 │   │   └── index.ts
 │   └── utils
-│       ├── googlePhotos.ts
+│       ├── imageSrc.ts
 │       └── __tests__
-│           └── googlePhotos.test.js
+│           └── imageSrc.test.ts
 └── tsconfig.json
 ```
 
@@ -78,6 +80,14 @@ $ npm run dev
 ```
 
 If the process exits with no errors you should be able to access the result page at: https://localhost:3000/
+
+### Images (`public/images`)
+
+Put image assets in **`public/images/`** and reference them in `data.json` with paths like **`"/images/filename.jpg"`**. They are copied to **`build/images/…`** on build and served as static files on GitHub Pages.
+
+`src/utils/imageSrc.ts` (`resolveImageSrc`) resolves values from data: paths starting with **`/`** are used unchanged, as are other absolute URLs.
+
+**`next/image`:** Next.js component for lazy loading, dimensions, and (on hosts with a server) WebP conversion and resizing. With **`output: 'export'`** there is no optimization API: `next.config.js` sets **`images.unoptimized: true`**, so `<Image … />` behaves like a plain `<img>` against static files. The site still uses `Avatar` / `CardMedia` with normal `src`; you can switch to `next/image` later if you want fixed `width`/`height` and consistent lazy loading.
 
 ## Deploying to GitHub Pages
 
@@ -104,15 +114,15 @@ In the GitHub repository: **Settings → Pages**.
 - For the automated workflow, set **Source** to **GitHub Actions** (see below). For a branch-based setup, pick the branch and folder that contain the contents of `build/`.
 - The files GitHub serves must be the **contents** of `build/` after step 2 above—for example the root of a `gh-pages` branch, or `/ (root)` of `main` if you commit the built assets there.
 
-### User site (questo repository)
+### User site (this repository)
 
-`package.json` imposta `"homepage": "https://dannyd2222.github.io"`, coerente con un **sito utente** alla radice del dominio. **Non** servono `basePath` né `assetPrefix` in `next.config.js` (il sito non è sotto `/nome-repo`).
+`package.json` sets `"homepage": "https://dannyd2222.github.io"`, consistent with a **user site** at the domain root. You do **not** need `basePath` or `assetPrefix` in `next.config.js` (the site is not under `/repo-name`).
 
-Se in futuro spostassi lo stesso codice in un **project site** (es. `https://dannyd2222.github.io/mio-progetto/`), andrebbero aggiunti in `next.config.js` sia `basePath` sia `assetPrefix` (es. `'/mio-progetto'`), poi `npm run build` e ridistribuire la cartella `build/`.
+If you later move the same code to a **project site** (e.g. `https://dannyd2222.github.io/my-project/`), add both `basePath` and `assetPrefix` in `next.config.js` (e.g. `'/my-project'`), then `npm run build` and redeploy the `build/` folder.
 
 ### GitHub Actions workflow
 
-Il workflow principale è [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml), che esegue build e deploy a ogni push su `main` (e su esecuzione manuale). Il file [`.github/workflows/nextjs.yml`](.github/workflows/nextjs.yml) è solo un template: non parte automaticamente su push, perché usa `out/` e opzioni non allineate a questo progetto (`distDir: 'build'`).
+The main workflow is [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml), which builds and deploys on every push to `main` (and on manual runs). [`.github/workflows/nextjs.yml`](.github/workflows/nextjs.yml) is only a template: it does not run automatically on push because it uses `out/` and options not aligned with this project (`distDir: 'build'`).
 
 **How it works (two jobs):**
 
@@ -134,4 +144,4 @@ You can still deploy manually by copying `build/` if you prefer not to use Actio
 
 ## Author
 
-* **Daniele Dalle Nogare** - *Full Stack Developer* - [Linkedin page](https://www.linkedin.com/in/danieledallenogare)
+* **Daniele Dalle Nogare** - *Full Stack Developer* - [LinkedIn profile](https://www.linkedin.com/in/danieledallenogare)

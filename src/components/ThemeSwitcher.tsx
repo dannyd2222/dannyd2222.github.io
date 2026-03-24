@@ -11,9 +11,10 @@ export default function ThemeSwitcher () {
 
   return (
     <IconButton
-      sx={{ ml: 1 }}
+      sx={{ ml: 1, color: "text.primary" }}
       onClick={muiUtils.toggleColorMode}
-      color="inherit">
+      aria-label="Cambia tema"
+    >
       {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
     </IconButton>
   );

@@ -1,5 +1,5 @@
 import { createContext, useMemo, useState } from "react";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import { blackTheme, lightTheme } from '../theme';
 
 /**
@@ -19,7 +19,7 @@ export default function MUIWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState<"light" | "dark">("dark");
   const muiWrapperUtils = useMemo(
     () => ({
       toggleColorMode: () => {
