@@ -1,17 +1,25 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowBack from "@mui/icons-material/ArrowBack";
-import { alpha } from "@mui/material/styles";
+import { alpha, useTheme } from "@mui/material/styles";
 import Sidebar from "./Sidebar";
 import ThemeSwitcher from "./ThemeSwitcher";
+import { Typography } from "@mui/material";
 
 export default function ApplicationBar({ parent = null }) {
   const router = useRouter();
+  const theme = useTheme();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const logoSrc =
+    theme.palette.mode === "light"
+      ? "/images/ddn_logo_light.png"
+      : "/images/ddn_logo_dark.png";
 
   const onIconClick = () => {
     if (parent) {
@@ -57,6 +65,21 @@ export default function ApplicationBar({ parent = null }) {
         >
           <Icon />
         </IconButton>
+        <IconButton
+          aria-label="Home"
+          onClick={() => router.push("/")}
+          size="large"
+          sx={{ color: "text.primary" }}
+        >
+          <Image
+            src={logoSrc}
+            alt=""
+            width={28}
+            height={28}
+            style={{ display: "block" }}
+          />
+        </IconButton>
+
         <ThemeSwitcher />
       </Toolbar>
       <Sidebar isOpen={isSidebarOpen} onClose={onSidebarClose} />
