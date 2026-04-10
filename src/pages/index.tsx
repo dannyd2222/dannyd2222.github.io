@@ -15,6 +15,7 @@ import ReferenceIcon from "../components/ReferenceIcon";
 import SectionItem from "../components/SectionItem";
 import SkypeIcon from "../components/icons/SkypeIcon";
 import AppBar from "../components/Appbar";
+import CvDownloadButton from "../components/CvDownloadButton";
 import DataItem from "../components/DataItem";
 import ContactForm from "../components/ContactForm";
 import MotionSection, {
@@ -73,10 +74,13 @@ export default function Index() {
                 >
                   {role}
                 </Typography>
+                <Box sx={{ mt: 2.5 }}>
+                  <CvDownloadButton />
+                </Box>
               </Box>
             </MotionSection>
 
-            <Box sx={{ my: 3 }} />
+            <Box sx={{ my: 2 }} />
 
             <MotionSection delay={0.06}>
               <Avatar imgSrc={profileImage} imgAlt={name} />
