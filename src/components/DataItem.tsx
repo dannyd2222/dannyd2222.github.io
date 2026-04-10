@@ -39,8 +39,8 @@ export default function DataItem({
       title={title}
       sx={{
         width: "100%",
-        height: "auto",
-        objectFit: "contain",
+        height: "100%",
+        objectFit: "cover",
         objectPosition: "center",
         display: "block",
       }}
@@ -49,7 +49,8 @@ export default function DataItem({
     <Box
       sx={{
         width: "100%",
-        minHeight: { xs: 140, sm: 120 },
+        height: "100%",
+        minHeight: { xs: 200, sm: 120 },
         bgcolor: "action.hover",
         display: "flex",
         alignItems: "center",
@@ -71,6 +72,7 @@ export default function DataItem({
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
         overflow: "hidden",
+        bgcolor: "action.hover",
         borderRadius: 3,
         border: 1,
         borderColor: "divider",
@@ -88,13 +90,13 @@ export default function DataItem({
       <Box
         sx={{
           width: { xs: "100%", sm: 168 },
-          height: { xs: "50px", sm: "120px" },
+          height: { xs: 200, sm: "120px" },
           flexShrink: 0,
-          bgcolor: "action.hover",
           alignSelf: { xs: "stretch", sm: "center" },
           display: "flex",
-          alignItems: "center",
+          alignItems: "stretch",
           justifyContent: "center",
+          overflow: "hidden",
         }}
       >
         {media}
@@ -106,6 +108,11 @@ export default function DataItem({
           display: "flex",
           flexDirection: "column",
           minWidth: 0,
+          bgcolor: "background.paper",
+          position: "relative",
+          zIndex: 1,
+          borderTop: { xs: 1, sm: 0 },
+          borderColor: "divider",
         }}
       >
         <Box
@@ -126,19 +133,21 @@ export default function DataItem({
             <Typography variant="h6" component="h2" sx={{ mb: 0.5 }} noWrap>
               {title}
             </Typography>
-            <PlaceLink placeUrl={placeUrl}>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                component="p"
-                noWrap
-              >
-                @{place}{" "}
-                <Typography component="span" sx={{ fontStyle: "italic" }}>
-                  {timePeriod}
+            <Box
+              display="flex"
+              flexDirection="row"
+              alignItems="center"
+              color="text.secondary"
+            >
+              <PlaceLink placeUrl={placeUrl}>
+                <Typography variant="body2" component="p" noWrap>
+                  @{place}{" "}
                 </Typography>
+              </PlaceLink>
+              <Typography component="span" sx={{ ml: 1, fontStyle: "italic" }}>
+                {timePeriod}
               </Typography>
-            </PlaceLink>
+            </Box>
           </CardContent>
           {isExpandable ? (
             <CardActions sx={{ pt: { xs: 2, sm: 2 }, pr: 1, flexShrink: 0 }}>
@@ -153,25 +162,49 @@ export default function DataItem({
         <Collapse in={isExpanded} timeout="auto" unmountOnExit>
           <Divider sx={{ mx: 2 }} />
           <CardContent sx={{ pt: 2, pb: 2 }}>
-            {contentParagraphs.map((it, index) => (
-              <Typography
-                key={index}
-                component="p"
-                variant="body2"
-                sx={{
-                  textIndent: theme.spacing(1),
-                  textAlign: "justify",
-                  mb: index < contentParagraphs.length - 1 ? 1.5 : 0,
-                }}
-              >
-                {it}
-              </Typography>
-            ))}
+            {contentParagraphs.map((entry, index) => {
+              const { text, href } = normalizeContentParagraph(entry);
+              return (
+                <Typography
+                  key={index}
+                  component="p"
+                  variant="body2"
+                  sx={{
+                    mb: index < contentParagraphs.length - 1 ? 1.5 : 0,
+                  }}
+                >
+                  {href ? (
+                    <Link
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      underline="hover"
+                      color="primary"
+                    >
+                      {text}
+                    </Link>
+                  ) : (
+                    text
+                  )}
+                </Typography>
+              );
+            })}
           </CardContent>
         </Collapse>
       </Box>
     </Card>
   );
+}
+
+function normalizeContentParagraph(entry) {
+  if (typeof entry === "string") return { text: entry, href: undefined };
+  if (entry && typeof entry === "object" && typeof entry.text === "string") {
+    return {
+      text: entry.text,
+      href: typeof entry.href === "string" ? entry.href : undefined,
+    };
+  }
+  return { text: "", href: undefined };
 }
 
 const PlaceLink = ({ placeUrl, children }) => {

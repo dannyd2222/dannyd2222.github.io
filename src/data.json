@@ -130,12 +130,15 @@
   "publications": [
     {
       "title": "GIMT: A Tool for Ontology and Goal Modeling in BDI Multi-Agent Design",
-      "place": "WOA 2014",
-      "placeUrl": "",
+      "place": "WOA 2014 - Dagli Oggetti agli Agenti",
+      "placeUrl": "https://ceur-ws.org/Vol-1260/",
       "image": "/images/logo-icar.jpg",
-      "timePeriod": "2014",
+      "timePeriod": "26/09/2014",
       "contentParagraphs": [
-        "Cossentino, M., Dalle Nogare, D., Giancarlo, R., Lodato, C., Lopes, S., Ribino, P., … & Seidita, V. (2014). GIMT: A Tool for Ontology and Goal Modeling in BDI Multi-Agent Design. In WOA 2014."
+        {
+          "text": "Cossentino, M., Dalle Nogare, D., Giancarlo, R., Lodato, C., Lopes, S., Ribino, P., … & Seidita, V. (2014). GIMT: A Tool for Ontology and Goal Modeling in BDI Multi-Agent Design. In WOA 2014.",
+          "href": "https://www.researchgate.net/profile/Valeria-Seidita/publication/278677898_Gimt_A_tool_for_ontology_and_goal_modeling_in_BDI_multi-agent_design/links/57cfe04508ae83b37463b600/Gimt-A-tool-for-ontology-and-goal-modeling-in-BDI-multi-agent-design.pdf"
+        }
       ]
     }
   ],
