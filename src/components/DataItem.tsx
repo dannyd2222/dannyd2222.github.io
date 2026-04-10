@@ -43,6 +43,7 @@ export default function DataItem({
         objectFit: "cover",
         objectPosition: "center",
         display: "block",
+        overflow: "visible",
       }}
     />
   ) : (
@@ -96,7 +97,7 @@ export default function DataItem({
           display: "flex",
           alignItems: "stretch",
           justifyContent: "center",
-          overflow: "hidden",
+          // overflow: "hidden",
         }}
       >
         {media}
@@ -135,6 +136,7 @@ export default function DataItem({
             </Typography>
             <Box
               display="flex"
+              flexWrap="wrap"
               flexDirection="row"
               alignItems="center"
               color="text.secondary"
