@@ -45,6 +45,18 @@
       ]
     },
     {
+      "title": "Co-trainer — Corso AI Engineer",
+      "place": "CRIF",
+      "placeUrl": "https://www.crif.it/",
+      "image": "/images/crif-logo.png",
+      "timePeriod": "03/2026",
+      "contentParagraphs": [
+        "Partecipazione alla conduzione di un percorso su ingegneria applicata agli LLM: fondamenti dei modelli (frontier vs open source, consumo via API cloud e on-premise), capacità e limiti del determinismo in integrazione.",
+        "Prompt engineering avanzato (messaggi strutturati, CoT/ReAct, contesto lungo, sicurezza e output con schema/validazione). RAG moderno: embedding, vector DB, chunking, hybrid search, re-ranking, RAGAS e mitigazione “lost in the middle”.",
+        "Agenti e orchestrazione: loop ReAct, tool/function calling, memoria breve/lunga, LangGraph (stato, cicli, checkpoint, human-in-the-loop, time travel). Osservabilità (LangSmith/Langfuse). Conclusione su API con FastAPI, configurazione, caching, rate limit e streaming in produzione."
+      ]
+    },
+    {
       "title": "Trainer (Web Developer Full-Stack / Data Analyst & Data Engineer)",
       "place": "Refresh Academy",
       "placeUrl": "",
