@@ -22,6 +22,7 @@ import MotionSection, {
   StaggerChild,
   StaggerInView,
 } from "../components/MotionSection";
+import PortfolioTeaser from "../components/PortfolioTeaser";
 import settings from "../data.json";
 
 export default function Index() {
@@ -189,6 +190,12 @@ export default function Index() {
 
           <Box sx={{ my: 3 }} />
 
+          <MotionSection delay={0.06}>
+            <PortfolioTeaser />
+          </MotionSection>
+
+          <Box sx={{ my: 3 }} />
+
           <MotionSection delay={0.08}>
             <SectionItem title="Esperienze lavorative">
               {settings.experience.map((it) => (
@@ -283,9 +290,11 @@ export default function Index() {
 
           <Box sx={{ my: 3 }} />
 
-          <MotionSection delay={0.12}>
-            <ContactForm />
-          </MotionSection>
+          <Box id="contatti">
+            <MotionSection delay={0.12}>
+              <ContactForm />
+            </MotionSection>
+          </Box>
 
           <Box sx={{ my: 3 }} />
 

@@ -1,8 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { Typography, Box, Grid, Button, IconButton, TextField, Alert, Collapse } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import validate from 'validate.js';
-import emailjs from 'emailjs-com';
+import React, { useState, useEffect } from "react";
+import {
+  Typography,
+  Box,
+  Grid,
+  Button,
+  IconButton,
+  TextField,
+  Alert,
+  Collapse,
+  Link,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import validate from "validate.js";
+import emailjs from "emailjs-com";
 
 const USER_ID = "osjvnUxRhaIdVX_QR";
 const TEMPLATE_ID = "template_5dmy9xh";
@@ -10,13 +20,13 @@ const SERVICE_ID = "service_75ednvg";
 
 const schema = {
   name: {
-    presence: { allowEmpty: false, message: 'is required' },
+    presence: { allowEmpty: false, message: "is required" },
     length: {
       maximum: 128,
     },
   },
   email: {
-    presence: { allowEmpty: false, message: 'is required' },
+    presence: { allowEmpty: false, message: "is required" },
     email: true,
     length: {
       maximum: 300,
@@ -24,54 +34,49 @@ const schema = {
   },
 };
 
-
 export default function ContactForm() {
   const [open, setOpen] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
 
-        emailjs.sendForm(
-          SERVICE_ID,
-          TEMPLATE_ID,
-          e.target,
-          USER_ID
-        )
-        .then((res) => setOpen(true))
-        .catch(error => console.log('FAILED...', error));
+    emailjs
+      .sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
+      .then((res) => setOpen(true))
+      .catch((error) => console.log("FAILED...", error));
 
-        setFormState(formState => ({
-          ...formState,
-          isValid: false,
-          values: {
-            name: '',
-            email: ''
-          },
-          touched: {},
-          errors: {
-            name: [],
-            email: []
-          }
-        }));
-  }
+    setFormState((formState) => ({
+      ...formState,
+      isValid: false,
+      values: {
+        name: "",
+        email: "",
+      },
+      touched: {},
+      errors: {
+        name: [],
+        email: [],
+      },
+    }));
+  };
 
   const [formState, setFormState] = useState({
     isValid: false,
     values: {
-      name: '',
-      email: ''
+      name: "",
+      email: "",
     },
     touched: {},
     errors: {
       name: [],
-      email: []
+      email: [],
     },
   });
 
   useEffect(() => {
     const errors = validate(formState.values, schema);
 
-    setFormState(formState => ({
+    setFormState((formState) => ({
       ...formState,
       isValid: errors ? false : true,
       errors: errors || {},
@@ -81,14 +86,12 @@ export default function ContactForm() {
   const handleChange = (e) => {
     e.persist();
 
-    setFormState(formState => ({
+    setFormState((formState) => ({
       ...formState,
       values: {
         ...formState.values,
         [e.target.name]:
-          e.target.type === 'checkbox'
-            ? e.target.checked
-            : e.target.value,
+          e.target.type === "checkbox" ? e.target.checked : e.target.value,
       },
       touched: {
         ...formState.touched,
@@ -96,20 +99,18 @@ export default function ContactForm() {
       },
     }));
   };
-  //console.log(formState);
 
   const hasError = (field) => {
     return formState.touched[field] && formState.errors[field] ? true : false;
-  }
+  };
 
-  //console.log(hasError('name'));
   return (
     <div>
       <Box
         sx={{
           margin: "auto",
           width: "80%",
-          minWidth: 320
+          minWidth: 320,
         }}
       >
         <Collapse in={open}>
@@ -132,17 +133,28 @@ export default function ContactForm() {
           </Alert>
         </Collapse>
       </Box>
-      <form
-        name="contact-form"
-        style={{padding: 10}}
-        onSubmit={sendEmail}
-      >
+      <form name="contact-form" style={{ padding: 10 }} onSubmit={sendEmail}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h5" align="center">
-              <strong>Scrivimi!</strong>
+              <strong>
+                Scrivimi qui oppure dalla{" "}
+                <Link
+                  href="mailto:daniele.dallen@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="primary"
+                  underline="always"
+                >
+                  tua email
+                </Link>
+              </strong>
             </Typography>
-            <Typography variant="h6" color="textSecondary" align="center">
+            <Typography
+              color="textSecondary"
+              align="center"
+              style={{ marginTop: "0.5rem" }}
+            >
               Inserisci almeno il tuo nome e una mail a cui poterti ricontattare
             </Typography>
           </Grid>
@@ -155,13 +167,11 @@ export default function ContactForm() {
               name="name"
               id="name"
               fullWidth
-              helperText={
-                hasError('name') ? formState.errors.name[0] : null
-              }
-              error={hasError('name')}
+              helperText={hasError("name") ? formState.errors.name[0] : null}
+              error={hasError("name")}
               onChange={handleChange}
               type="text"
-              value={formState.values.name || ''}
+              value={formState.values.name || ""}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -172,11 +182,11 @@ export default function ContactForm() {
               size="medium"
               name="email"
               fullWidth
-              helperText={hasError('email') ? formState.errors.email[0] : null}
-              error={hasError('email')}
+              helperText={hasError("email") ? formState.errors.email[0] : null}
+              error={hasError("email")}
               onChange={handleChange}
               type="email"
-              value={formState.values.email || ''}
+              value={formState.values.email || ""}
             />
           </Grid>
           <Grid item xs={12}>
@@ -206,4 +216,4 @@ export default function ContactForm() {
       </form>
     </div>
   );
-};
+}

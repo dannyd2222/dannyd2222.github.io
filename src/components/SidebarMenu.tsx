@@ -8,6 +8,7 @@ import Link from "@mui/material/Link";
 import NextLink from "next/link";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import LoginIcon from "@mui/icons-material/Login";
+import GridViewIcon from "@mui/icons-material/GridView";
 import settings from "../data.json";
 
 const useStyles = makeStyles((theme) => ({
@@ -28,6 +29,12 @@ export default function ApplicationBar({ onClose = () => {} }) {
           </ListSubheader>
         }
       >
+        <ListItem button component={NextLink} href="/portfolio" onClick={onClose}>
+          <ListItemIcon>
+            <GridViewIcon />
+          </ListItemIcon>
+          <ListItemText primary="Portfolio" />
+        </ListItem>
         <ListItem button>
           <ListItemIcon>
             <LoginIcon />

@@ -58,7 +58,7 @@ export default function ApplicationBar({ parent = null }) {
       >
         <IconButton
           edge="start"
-          aria-label="menu"
+          aria-label={parent ? "Torna indietro" : "menu"}
           onClick={onIconClick}
           size="large"
           sx={{ color: "text.primary" }}

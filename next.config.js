@@ -11,6 +11,7 @@ const nextConfig = {
   exportPathMap: function () {
     return {
       '/': { page: '/' },
+      '/portfolio': { page: '/portfolio' },
       '/login': { page: '/login' },
       '/admin': { page: '/admin' },
       '/auth/callback': { page: '/auth/callback' },
