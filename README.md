@@ -142,6 +142,12 @@ You can still deploy manually by copying `build/` if you prefer not to use Actio
 
 **Troubleshooting:** If **Upload artifacts** fails with `tar: out: Cannot open`, the workflow is archiving the wrong folder. Next.js static export normally writes to `out/`, but this project sets `distDir: 'build'` in `next.config.js`, so the deployable files are under **`build/`**. Ensure `actions/upload-pages-artifact` uses `path: build` (not `out`). That error is unrelated to GitHub’s **Node.js 20 deprecation** warnings on the runner: those refer to the JavaScript runtime used *inside* official actions (`checkout`, `cache`, `configure-pages`, etc.). Updating action versions (as in the workflow file) reduces the noise; your app is still built with the `node-version` you set in `setup-node`.
 
+## Admin (modifica profilo)
+
+Competenze, esperienze e istruzione si modificano dall’area admin (`/login` → `/admin`) con autenticazione GitHub. Il sito resta statico su Pages; la persistenza avviene via API Vercel che committa `src/data.json`.
+
+**Setup completo (OAuth, Vercel, secrets GitHub):** [docs/ADMIN_SETUP.md](docs/ADMIN_SETUP.md).
+
 ## Author
 
 * **Daniele Dalle Nogare** - *Full Stack Developer* - [LinkedIn profile](https://www.linkedin.com/in/danieledallenogare)

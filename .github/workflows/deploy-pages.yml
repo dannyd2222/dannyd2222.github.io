@@ -41,7 +41,10 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npm run build
+      - name: Build static site
+        run: npm run build
+        env:
+          NEXT_PUBLIC_PROFILE_API_URL: ${{ vars.PROFILE_API_URL }}
 
       # Must match next.config.js: distDir is `build`, so the static export is here.
       # (Next’s default without distDir is `out/` — templates often use path: out; that causes

@@ -11,6 +11,8 @@ const nextConfig = {
     return {
       '/': { page: '/' },
       '/login': { page: '/login' },
+      '/admin': { page: '/admin' },
+      '/auth/callback': { page: '/auth/callback' },
     };
   },
 }
