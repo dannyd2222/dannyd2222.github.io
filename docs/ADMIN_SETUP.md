@@ -168,7 +168,8 @@ La sessione è un JWT in `sessionStorage` (si chiude con la scheda del browser).
 | 403/404 su Contents API | PAT con Contents **Read and write** sul repo giusto |
 | CORS | Origine del sito in `ALLOWED_ORIGINS` |
 | Sito non aggiornato dopo save | Tab **Actions**: workflow Deploy completato; cache browser |
-| Vercel: errore dopo `tsc --noEmit` | Apri il deploy → scorri **sotto** il typecheck (bundling functions). Se c’è `esbuild` / `allowScripts`, usa l’ultimo `main` con `services/profile-api/.npmrc`. In **Settings → General** lascia **Output Directory** vuota (non `build` / `out`). |
+| Vercel: *No Output Directory named "public"* | Il progetto API include `services/profile-api/public/` e in `vercel.json` è `outputDirectory: "public"`. In **Settings → General** imposta **Output Directory** = `public` (o lascia che legga da `vercel.json`). |
+| Vercel: errore dopo `tsc --noEmit` | Apri il deploy → scorri **sotto** il typecheck. Se c’è `esbuild` / `allowScripts`, serve `services/profile-api/.npmrc` su `main`. |
 | Deploy “Ready” ma 404 su `/api/...` | Root Directory deve essere `services/profile-api`, non la root del repo |
 
 ---
