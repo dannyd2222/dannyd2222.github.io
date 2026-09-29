@@ -2,6 +2,9 @@
   "name": "profile-api",
   "private": true,
   "version": "1.0.0",
+  "allowScripts": {
+    "esbuild": true
+  },
   "scripts": {
     "typecheck": "tsc --noEmit"
   },
