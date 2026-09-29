@@ -1,8 +1,18 @@
 const TOKEN_KEY = "profile_admin_session";
 
+/**
+ * Origin of the Vercel API, e.g. https://project.vercel.app
+ * Strips trailing slash and accidental /api or /api/auth/callback suffixes.
+ */
+export function normalizeApiBaseUrl(raw: string): string {
+  let url = raw.trim().replace(/\/+$/, "");
+  url = url.replace(/\/api\/auth\/callback$/i, "");
+  url = url.replace(/\/api$/i, "");
+  return url.replace(/\/+$/, "");
+}
+
 export function getApiBaseUrl(): string {
-  const url = process.env.NEXT_PUBLIC_PROFILE_API_URL ?? "";
-  return url.replace(/\/$/, "");
+  return normalizeApiBaseUrl(process.env.NEXT_PUBLIC_PROFILE_API_URL ?? "");
 }
 
 export function isAdminApiConfigured(): boolean {
@@ -24,7 +34,7 @@ export function clearToken(): void {
 
 export function buildOAuthStartUrl(siteOrigin: string): string {
   const api = getApiBaseUrl();
-  const returnUrl = `${siteOrigin}/auth/callback`;
+  const returnUrl = `${siteOrigin.replace(/\/+$/, "")}/auth/callback`;
   const params = new URLSearchParams({ returnUrl });
   return `${api}/api/auth/github?${params}`;
 }

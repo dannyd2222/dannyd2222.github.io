@@ -83,12 +83,18 @@ Solo dopo puoi importare o riconfigurare il progetto su Vercel.
    | `ALLOWED_ORIGINS` | `https://dannyd2222.github.io,http://localhost:3000` | origini del sito statico |
    | `DATA_JSON_PATH` | `src/data.json` | default, opzionale |
 
-6. Deploy. Annota l’URL produzione, es. `https://dannyd2222-profile-api.vercel.app`.
+6. Deploy. Annota l’URL **Production** da *Settings → Domains* (es. `https://dannyd2222-profile-api.vercel.app`).
+   Non usare un URL di un singolo deploy tipo `…-xxxx-username.vercel.app`: è una preview e spesso è protetta da SSO Vercel.
 
-7. Torna all’**OAuth App** su GitHub e imposta **Authorization callback URL** =
-   `https://<url-vercel>/api/auth/callback`.
+7. **Deployment Protection** (obbligatorio per OAuth pubblico):
+   Vercel → progetto API → **Settings → Deployment Protection**.
+   - Disattiva **Vercel Authentication** su **Production** (e su Preview se testi da localhost).
+   - Altrimenti `/api/auth/github` reindirizza a `vercel.com/sso-api` invece che a GitHub, e dopo il login vedi 404 o una pagina di accesso Vercel.
 
-8. Aggiorna su Vercel `OAUTH_CALLBACK_URL` con lo stesso valore se non l’avevi già messo, poi **Redeploy**.
+8. Torna all’**OAuth App** su GitHub e imposta **Authorization callback URL** =
+   `https://<url-produzione-vercel>/api/auth/callback`.
+
+9. Aggiorna su Vercel `OAUTH_CALLBACK_URL` con lo stesso valore se non l’avevi già messo, poi **Redeploy**.
 
 ### Verifica rapida API
 
@@ -109,7 +115,11 @@ L’URL Vercel va nel build del sito Next (variabile **pubblica**):
 1. Repo → **Settings → Secrets and variables → Actions → Variables**.
 2. Aggiungi **Repository variable**:
    - Nome: `PROFILE_API_URL`
-   - Valore: `https://<url-vercel>` (senza slash finale)
+   - Valore: `https://<url-vercel>` (**solo origine**, senza `/api` e senza slash finale)
+
+   | Corretto | Sbagliato (causa 404) |
+   |----------|------------------------|
+   | `https://nome.vercel.app` | `https://nome.vercel.app/api/auth/callback` |
 
 Il workflow `deploy-pages.yml` passa `NEXT_PUBLIC_PROFILE_API_URL` a `npm run build`.
 
@@ -126,6 +136,8 @@ Modifica `.env.local`:
 ```
 NEXT_PUBLIC_PROFILE_API_URL=https://<url-vercel>
 ```
+
+`NEXT_PUBLIC_PROFILE_API_URL` / `PROFILE_API_URL` è l’**origine** dell’API. È diversa da `OAUTH_CALLBACK_URL` (che invece è `https://<url-vercel>/api/auth/callback` e va solo su Vercel + GitHub OAuth App).
 
 Poi:
 
@@ -161,7 +173,8 @@ La sessione è un JWT in `sessionStorage` (si chiude con la scheda del browser).
 
 | Problema | Cosa controllare |
 |----------|------------------|
-| Login: API non configurata | Variable `PROFILE_API_URL` in GitHub Actions + rebuild |
+| Login da `/login` finisce su 404 Vercel | `NEXT_PUBLIC_PROFILE_API_URL` / `PROFILE_API_URL` deve essere **solo** `https://….vercel.app`. Se include `/api/auth/callback` il login apre `…/api/auth/callback/api/auth/github` (404). Riavvia `npm run dev` dopo aver corretto `.env.local`. |
+| Login finisce su SSO Vercel o 404 dopo GitHub | URL preview (`…-hash-user.vercel.app`) o **Deployment Protection** attiva. Usa il dominio Production e disattiva Vercel Authentication. |
 | OAuth redirect_uri mismatch | `OAUTH_CALLBACK_URL` = callback registrata su GitHub OAuth App |
 | Account non autorizzato | `GITHUB_ALLOWED_LOGIN` = username GitHub corretto |
 | 401 su salvataggio | Sessione scaduta (12h) → login di nuovo |

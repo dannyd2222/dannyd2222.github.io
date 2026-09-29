@@ -44,6 +44,7 @@ jobs:
       - name: Build static site
         run: npm run build
         env:
+          STATIC_EXPORT: "1"
           NEXT_PUBLIC_PROFILE_API_URL: ${{ vars.PROFILE_API_URL }}
 
       # Must match next.config.js: distDir is `build`, so the static export is here.

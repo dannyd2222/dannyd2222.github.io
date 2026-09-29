@@ -2,7 +2,8 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: false,
-  distDir: 'build',
+  // Dev uses default `.next`. CI sets STATIC_EXPORT=1 so the static site lands in `build/` for Pages.
+  ...(process.env.STATIC_EXPORT === '1' ? { distDir: 'build' } : {}),
   /** Con `output: 'export'` non c’è server di ottimizzazione: `next/image` richiede `unoptimized` (o un loader custom). */
   images: {
     unoptimized: true,

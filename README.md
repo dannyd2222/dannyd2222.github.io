@@ -96,10 +96,10 @@ Put image assets in **`public/images/`** and reference them in `data.json` with 
 ### What to publish
 
 1. Install dependencies: `npm ci` (or `npm install`).
-2. Run **`npm run build`**.
+2. Run **`npm run build:pages`** (sets `STATIC_EXPORT=1` so the site is emitted under **`build/`** for GitHub Pages).
 3. Deploy **everything inside the `build/` directory** (HTML, `_next/`, assets). That folder is the static site. Do not upload the raw source tree.
 
-Because `distDir` is set to `build`, the export is written there. If you removed `distDir`, Next.js would use `out/` instead.
+For local development use **`npm run dev`** (Next uses `.next/`, not `build/`). A plain **`npm run build`** without `STATIC_EXPORT` writes to **`out/`** and is mainly for checking production compile locally.
 
 To preview the static build locally (static export does not use `next start`):
 
