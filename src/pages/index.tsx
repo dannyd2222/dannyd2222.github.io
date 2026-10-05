@@ -24,11 +24,29 @@ import MotionSection, {
 } from "../components/MotionSection";
 import PortfolioTeaser from "../components/PortfolioTeaser";
 import settings from "../data.json";
+import { normalizeSection } from "../lib/profileTypes";
+import { portfolioSectionEnabled, portfolioServices } from "../data/portfolio";
 
 export default function Index() {
   const name = settings.fullName;
   const role = settings.role;
   const profileImage = settings.imageUrl;
+  const experience = normalizeSection(
+    settings.experience as unknown as
+      | typeof settings.experience
+      | (typeof settings.experience.items)[number][]
+  );
+  const education = normalizeSection(
+    settings.education as unknown as
+      | typeof settings.education
+      | (typeof settings.education.items)[number][]
+  );
+  const visibleExperience = experience.items.filter(
+    (entry) => entry.enabled !== false
+  );
+  const visibleEducation = education.items.filter(
+    (entry) => entry.enabled !== false
+  );
 
   return (
     <Box
@@ -190,15 +208,18 @@ export default function Index() {
 
           <Box sx={{ my: 3 }} />
 
-          <MotionSection delay={0.06}>
-            <PortfolioTeaser />
-          </MotionSection>
+          {portfolioSectionEnabled && portfolioServices.length > 0 ? (
+            <MotionSection delay={0.06}>
+              <PortfolioTeaser />
+            </MotionSection>
+          ) : null}
 
           <Box sx={{ my: 3 }} />
 
-          <MotionSection delay={0.08}>
-            <SectionItem title="Esperienze lavorative">
-              {settings.experience.map((it) => (
+          {experience.enabled && visibleExperience.length > 0 ? (
+            <MotionSection delay={0.08}>
+              <SectionItem title="Esperienze lavorative">
+                {visibleExperience.map((it) => (
                 <DataItem
                   key={it.title + it.timePeriod}
                   title={it.title}
@@ -208,15 +229,17 @@ export default function Index() {
                   timePeriod={it.timePeriod}
                   contentParagraphs={it.contentParagraphs}
                 />
-              ))}
-            </SectionItem>
-          </MotionSection>
+                ))}
+              </SectionItem>
+            </MotionSection>
+          ) : null}
 
           <Box sx={{ my: 3 }} />
 
-          <MotionSection delay={0.1}>
-            <SectionItem title="Istruzione e formazione">
-              {settings.education.map((it) => (
+          {education.enabled && visibleEducation.length > 0 ? (
+            <MotionSection delay={0.1}>
+              <SectionItem title="Istruzione e formazione">
+                {visibleEducation.map((it) => (
                 <DataItem
                   key={`${it.title}-${it.timePeriod}`}
                   title={it.title}
@@ -226,7 +249,7 @@ export default function Index() {
                   timePeriod={it.timePeriod}
                   contentParagraphs={it.contentParagraphs}
                 />
-              ))}
+                ))}
               {Array.isArray(settings.researchProjects) &&
               settings.researchProjects.length > 0 ? (
                 <>
@@ -285,8 +308,9 @@ export default function Index() {
                   ))}
                 </>
               ) : null}
-            </SectionItem>
-          </MotionSection>
+              </SectionItem>
+            </MotionSection>
+          ) : null}
 
           <Box sx={{ my: 3 }} />
 

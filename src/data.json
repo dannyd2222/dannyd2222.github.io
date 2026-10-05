@@ -32,8 +32,11 @@
     "Data visualization",
     "AI Engineering"
   ],
-  "experience": [
+  "experience": {
+    "enabled": true,
+    "items": [
     {
+      "enabled": true,
       "title": "Senior Full-Stack Developer",
       "place": "LAIF - Collab.",
       "placeUrl": "https://laifgroup.com/",
@@ -46,6 +49,7 @@
       ]
     },
     {
+      "enabled": true,
       "title": "Co-trainer — Corso AI Engineer",
       "place": "CRIF - Collab.",
       "placeUrl": "https://www.crif.it/",
@@ -58,6 +62,7 @@
       ]
     },
     {
+      "enabled": true,
       "title": "Trainer (Web Developer Full-Stack / Data Analyst & Data Engineer)",
       "place": "Refresh Academy - Collab.",
       "placeUrl": "https://refresh-academy.org/",
@@ -69,6 +74,7 @@
       ]
     },
     {
+      "enabled": true,
       "title": "Data Architecture & Visualization Developer",
       "place": "Ammagamma",
       "placeUrl": "https://www.ammagamma.com/",
@@ -80,6 +86,7 @@
       ]
     },
     {
+      "enabled": true,
       "title": "Full Stack Developer & Solutions Architect",
       "place": "Weborama Italia",
       "placeUrl": "https://weborama.com/it/su-di-noi/",
@@ -92,6 +99,7 @@
       ]
     },
     {
+      "enabled": true,
       "title": "Data Visualization Specialist",
       "place": "Weborama Italia",
       "placeUrl": "https://weborama.com/it/su-di-noi/",
@@ -104,6 +112,7 @@
       ]
     },
     {
+      "enabled": true,
       "title": "Front-end Developer & Rich Media Support",
       "place": "Weborama Italia",
       "placeUrl": "https://weborama.com/it/su-di-noi/",
@@ -114,9 +123,13 @@
         "Supporto tecnico a clienti (Centri Media, Publisher, Agenzie creative). Editing di asset video e immagini per advertising online."
       ]
     }
-  ],
-  "education": [
+    ]
+  },
+  "education": {
+    "enabled": true,
+    "items": [
     {
+      "enabled": true,
       "title": "Laurea triennale in Informatica",
       "place": "Università degli Studi di Palermo",
       "placeUrl": "https://www.unipa.it/",
@@ -127,7 +140,73 @@
         "Tesi: Un tool per la progettazione Goal-Oriented a partire dall'ontologia del problema."
       ]
     }
-  ],
+    ]
+  },
+  "portfolio": {
+    "enabled": true,
+    "items": [
+      {
+        "enabled": true,
+        "id": "ads-sync",
+        "eyebrow": "Integrazioni (Google Ads)",
+        "title": "Sincronizzazione automatica delle audience Google Ads",
+        "summary": "Le audience si aggiornano automaticamente dai dati di business, senza caricamenti manuali.",
+        "description": "Una soluzione cloud che collega BigQuery e Google Ads tramite Google Data Manager API, mantenendo le audience allineate ai dati reali. Il flusso gestisce creazione lista, ingest dei membri, checkpoint e diagnostica, così il team riduce le operazioni manuali e mantiene il controllo sul processo.",
+        "outcomes": [
+          "Aggiornamento automatico delle audience senza interventi manuali",
+          "Pipeline più affidabile grazie a checkpoint, logging e diagnostica",
+          "Processo eseguibile in cloud, indipendente dalla macchina del singolo operatore"
+        ],
+        "tags": ["Google Ads", "BigQuery", "Automazione", "Cloud Run"],
+        "visual": "ads"
+      },
+      {
+        "enabled": true,
+        "id": "platforms",
+        "eyebrow": "Piattaforme",
+        "title": "Gestionali progettati sul modo di lavorare",
+        "summary": "Soluzioni su misura per marketing, sport, servizi e altri contesti operativi.",
+        "description": "Piattaforme web pensate per organizzare attività, processi e relazioni in modo semplice e coerente con il lavoro quotidiano. Ogni flusso viene adattato al settore e agli obiettivi del cliente, evitando modelli generici e riducendo passaggi inutili.",
+        "outcomes": [
+          "Processi più chiari e facili da seguire",
+          "Meno dispersione tra fogli, email e strumenti separati",
+          "Un sistema adattato al settore e ai flussi reali del team"
+        ],
+        "tags": ["Frontend", "API", "Cloud", "Business Intelligence"],
+        "visual": "crm"
+      },
+      {
+        "enabled": true,
+        "id": "generative-ai",
+        "eyebrow": "Intelligenza artificiale",
+        "title": "Risposte ancorate a una conoscenza precisa",
+        "summary": "Analisi documenti, assistenti e suggerimenti su materiale proprio.",
+        "description": "Servizi di AI generativa che rispondono su una base di conoscenza specifica: documenti, regole, storico. Servono a leggere testi lunghi, dialogare con un assistente e ottenere previsioni o suggerimenti utili a decidere.",
+        "outcomes": [
+          "Risposte legate al materiale dell’organizzazione",
+          "Analisi di documenti in pochi minuti, al posto di una lettura integrale",
+          "Indicazioni e previsioni a supporto di chi deve scegliere"
+        ],
+        "tags": ["AI", "Documenti", "Assistenti", "Previsioni"],
+        "visual": "ai"
+      },
+      {
+        "enabled": true,
+        "id": "data",
+        "eyebrow": "Dati",
+        "title": "Numeri grandi, letture immediate",
+        "summary": "Dati di grandi dimensioni resi consultabili in dashboard.",
+        "description": "Dalla gestione di grandi quantità di dati fino a dashboard che si aprono e si esplorano. Gli archivi diventano una vista condivisa di cosa sta succedendo, senza aspettare che qualcuno prepari un report.",
+        "outcomes": [
+          "Dati aggiornati e affidabili, pronti da consultare",
+          "Cruscotti interattivi per filtrare, confrontare e scendere nel dettaglio",
+          "La stessa lettura per chi analizza e per chi decide"
+        ],
+        "tags": ["Big data", "Dashboard", "Data Warehouse"],
+        "visual": "data"
+      }
+    ]
+  },
   "researchProjects": [
     {
       "title": "Java Developer",

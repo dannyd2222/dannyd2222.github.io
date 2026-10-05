@@ -16,6 +16,7 @@ type PortfolioEntryProps = {
 export default function PortfolioEntry({ service, index }: PortfolioEntryProps) {
   const theme = useTheme();
   const reverse = index % 2 === 1;
+  const hasMedia = Boolean(service.visual || service.image);
   const shadow =
     theme.palette.mode === "dark"
       ? `0 10px 36px ${alpha("#000", 0.45)}`
@@ -26,7 +27,9 @@ export default function PortfolioEntry({ service, index }: PortfolioEntryProps) 
       component="article"
       sx={{
         display: "flex",
-        flexDirection: { xs: "column", md: reverse ? "row-reverse" : "row" },
+        flexDirection: hasMedia
+          ? { xs: "column", md: reverse ? "row-reverse" : "row" }
+          : "column",
         overflow: "hidden",
         borderRadius: 3,
         border: 1,
@@ -35,12 +38,27 @@ export default function PortfolioEntry({ service, index }: PortfolioEntryProps) 
         boxShadow: shadow,
       }}
     >
-      <Box sx={{ flex: { md: "1.08 1 0" }, minWidth: 0 }}>
-        <ServiceVisual kind={service.visual} />
-      </Box>
+      {service.visual ? (
+        <Box sx={{ flex: { md: "1.08 1 0" }, minWidth: 0 }}>
+          <ServiceVisual kind={service.visual} />
+        </Box>
+      ) : service.image ? (
+        <Box
+          component="img"
+          src={service.image.src}
+          alt={service.image.alt}
+          sx={{
+            flex: { md: "1.08 1 0" },
+            minWidth: 0,
+            width: { xs: "100%", md: "50%" },
+            height: { xs: 280, md: 360 },
+            objectFit: "cover",
+          }}
+        />
+      ) : null}
       <Box
         sx={{
-          flex: { md: "0.92 1 0" },
+          flex: hasMedia ? { md: "0.92 1 0" } : "1 1 100%",
           minWidth: 0,
           display: "flex",
           flexDirection: "column",
@@ -48,7 +66,7 @@ export default function PortfolioEntry({ service, index }: PortfolioEntryProps) 
           gap: 1.5,
           px: { xs: 2.5, sm: 3.5, md: 4 },
           py: { xs: 2.5, sm: 3.5, md: 4 },
-          borderTop: { xs: 1, md: 0 },
+          borderTop: hasMedia ? { xs: 1, md: 0 } : 0,
           borderColor: "divider",
         }}
       >

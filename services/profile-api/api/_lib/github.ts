@@ -8,8 +8,9 @@ type GitHubContentResponse = {
 
 export type ProfileEditable = {
   techStaff?: string[];
-  experience?: unknown[];
-  education?: unknown[];
+  experience?: { enabled: boolean; items: unknown[] };
+  education?: { enabled: boolean; items: unknown[] };
+  portfolio?: { enabled: boolean; items: unknown[] };
 };
 
 function githubHeaders(): Record<string, string> {
@@ -130,6 +131,9 @@ export function mergeProfileUpdate(
   }
   if (patch.education !== undefined) {
     next.education = patch.education;
+  }
+  if (patch.portfolio !== undefined) {
+    next.portfolio = patch.portfolio;
   }
   return next;
 }
