@@ -35,111 +35,111 @@
   "experience": {
     "enabled": true,
     "items": [
-    {
-      "enabled": true,
-      "title": "Senior Full-Stack Developer",
-      "place": "LAIF - Collab.",
-      "placeUrl": "https://laifgroup.com/",
-      "image": "/images/laif-logo.png",
-      "timePeriod": "09/2024 - in corso",
-      "contentParagraphs": [
-        "Sviluppo feature full-stack e definizione architettura moduli (TypeScript/Node). Integrazione API e autenticazione OAuth2. Miglioramenti su performance e migrazioni.",
-        "CI/CD e ambienti Docker. Gestione e standardizzazione suite di test E2E (Playwright). Contributo a design system e incremento coverage per qualità e coerenza del codice.",
-        "Stack: TypeScript, Python, Node.js, Docker, GitHub Actions, Playwright, Just, AWS."
-      ]
-    },
-    {
-      "enabled": true,
-      "title": "Co-trainer — Corso AI Engineer",
-      "place": "CRIF - Collab.",
-      "placeUrl": "https://www.crif.it/",
-      "image": "/images/crif-logo.png",
-      "timePeriod": "03/2026",
-      "contentParagraphs": [
-        "Partecipazione alla conduzione di un percorso su ingegneria applicata agli LLM: fondamenti dei modelli (frontier vs open source, consumo via API cloud e on-premise), capacità e limiti del determinismo in integrazione.",
-        "Prompt engineering avanzato (messaggi strutturati, CoT/ReAct, contesto lungo, sicurezza e output con schema/validazione). RAG moderno: embedding, vector DB, chunking, hybrid search, re-ranking, RAGAS e mitigazione “lost in the middle”.",
-        "Agenti e orchestrazione: loop ReAct, tool/function calling, memoria breve/lunga, LangGraph (stato, cicli, checkpoint, human-in-the-loop, time travel). Osservabilità (LangSmith/Langfuse). Conclusione su API con FastAPI, configurazione, caching, rate limit e streaming in produzione."
-      ]
-    },
-    {
-      "enabled": true,
-      "title": "Trainer (Web Developer Full-Stack / Data Analyst & Data Engineer)",
-      "place": "Refresh Academy - Collab.",
-      "placeUrl": "https://refresh-academy.org/",
-      "image": "/images/logo-refresh.webp",
-      "timePeriod": "12/2024 - 07/2025",
-      "contentParagraphs": [
-        "Trainer in 2 percorsi (350 ore): Web Developer Full-Stack e Data Analyst & Data Engineer.",
-        "Definizione del programma del corso, organizzazione lezioni ed esercitazioni, revisione elaborati e mentoring su workflow e best practice."
-      ]
-    },
-    {
-      "enabled": true,
-      "title": "Data Architecture & Visualization Developer",
-      "place": "Ammagamma",
-      "placeUrl": "https://www.ammagamma.com/",
-      "image": "/images/ammagamma-logo.jpg",
-      "timePeriod": "05/2023 - 05/2024",
-      "contentParagraphs": [
-        "Progettazione e implementazione di architetture dati scalabili per esigenze analitiche. Collaborazione con PM e Data Scientist per pipeline dati e fruizione coerente.",
-        "Gestione e ottimizzazione dell'infrastruttura cloud per elaborazione e visualizzazione (efficienza, scalabilità, sicurezza)."
-      ]
-    },
-    {
-      "enabled": true,
-      "title": "Full Stack Developer & Solutions Architect",
-      "place": "Weborama Italia",
-      "placeUrl": "https://weborama.com/it/su-di-noi/",
-      "image": "/images/logo-weborama.jpg",
-      "timePeriod": "02/2022 - 04/2023",
-      "contentParagraphs": [
-        "Raccolta requisiti e allineamento con PM e clienti fino alla consegna della soluzione. Valutazione tecnologie e miglioramento continuo di infrastruttura e processi di sviluppo.",
-        "Stime tempi e costi. Supporto all'organizzazione dei flussi tra team.",
-        "Ambiti / stack: ETL / Data Analysis / ML (Python, MongoDB, Apache Spark, Pandas, AWS Step Functions, AWS Lambda, EMR); API (Python, MongoDB, AWS API Gateway, AWS Lambda); DevOps (Bash, Unix, Apache NiFi, Ansible, Node.js, Nginx, Git); Web (HTML, CSS, JavaScript, Ajax, Bootstrap, jQuery, Backbone.js)."
-      ]
-    },
-    {
-      "enabled": true,
-      "title": "Data Visualization Specialist",
-      "place": "Weborama Italia",
-      "placeUrl": "https://weborama.com/it/su-di-noi/",
-      "image": "/images/logo-weborama.jpg",
-      "timePeriod": "06/2020 - 02/2022",
-      "contentParagraphs": [
-        "Sviluppo dashboard e data product per analisi su big data.",
-        "Selezione framework e librerie per manutenibilità, personalizzazione e supporto community.",
-        "Introduzione di unit test automatici (Jest) e collaborazione con Data Engineering su flussi automatizzati."
-      ]
-    },
-    {
-      "enabled": true,
-      "title": "Front-end Developer & Rich Media Support",
-      "place": "Weborama Italia",
-      "placeUrl": "https://weborama.com/it/su-di-noi/",
-      "image": "/images/logo-weborama.jpg",
-      "timePeriod": "03/2015 - 06/2020",
-      "contentParagraphs": [
-        "Sviluppo formati statici e rich media, piattaforme e tool interni (HTML/CSS/JavaScript).",
-        "Supporto tecnico a clienti (Centri Media, Publisher, Agenzie creative). Editing di asset video e immagini per advertising online."
-      ]
-    }
+      {
+        "enabled": true,
+        "title": "Senior Full-Stack Developer",
+        "place": "LAIF - Collab.",
+        "placeUrl": "https://laifgroup.com/",
+        "image": "/images/laif-logo.png",
+        "timePeriod": "09/2024 - in corso",
+        "contentParagraphs": [
+          "Sviluppo feature full-stack e definizione architettura moduli (TypeScript/Node). Integrazione API e autenticazione OAuth2. Miglioramenti su performance e migrazioni.",
+          "CI/CD e ambienti Docker. Gestione e standardizzazione suite di test E2E (Playwright). Contributo a design system e incremento coverage per qualità e coerenza del codice.",
+          "Stack: TypeScript, Python, Node.js, Docker, GitHub Actions, Playwright, Just, AWS."
+        ]
+      },
+      {
+        "enabled": true,
+        "title": "Co-trainer — Corso AI Engineer",
+        "place": "CRIF - Collab.",
+        "placeUrl": "https://www.crif.it/",
+        "image": "/images/crif-logo.png",
+        "timePeriod": "03/2026",
+        "contentParagraphs": [
+          "Partecipazione alla conduzione di un percorso su ingegneria applicata agli LLM: fondamenti dei modelli (frontier vs open source, consumo via API cloud e on-premise), capacità e limiti del determinismo in integrazione.",
+          "Prompt engineering avanzato (messaggi strutturati, CoT/ReAct, contesto lungo, sicurezza e output con schema/validazione). RAG moderno: embedding, vector DB, chunking, hybrid search, re-ranking, RAGAS e mitigazione “lost in the middle”.",
+          "Agenti e orchestrazione: loop ReAct, tool/function calling, memoria breve/lunga, LangGraph (stato, cicli, checkpoint, human-in-the-loop, time travel). Osservabilità (LangSmith/Langfuse). Conclusione su API con FastAPI, configurazione, caching, rate limit e streaming in produzione."
+        ]
+      },
+      {
+        "enabled": true,
+        "title": "Trainer (Web Developer Full-Stack / Data Analyst & Data Engineer)",
+        "place": "Refresh Academy - Collab.",
+        "placeUrl": "https://refresh-academy.org/",
+        "image": "/images/logo-refresh.webp",
+        "timePeriod": "12/2024 - 07/2025",
+        "contentParagraphs": [
+          "Trainer in 2 percorsi (350 ore): Web Developer Full-Stack e Data Analyst & Data Engineer.",
+          "Definizione del programma del corso, organizzazione lezioni ed esercitazioni, revisione elaborati e mentoring su workflow e best practice."
+        ]
+      },
+      {
+        "enabled": true,
+        "title": "Data Architecture & Visualization Developer",
+        "place": "Ammagamma",
+        "placeUrl": "https://www.ammagamma.com/",
+        "image": "/images/ammagamma-logo.jpg",
+        "timePeriod": "05/2023 - 05/2024",
+        "contentParagraphs": [
+          "Progettazione e implementazione di architetture dati scalabili per esigenze analitiche. Collaborazione con PM e Data Scientist per pipeline dati e fruizione coerente.",
+          "Gestione e ottimizzazione dell'infrastruttura cloud per elaborazione e visualizzazione (efficienza, scalabilità, sicurezza)."
+        ]
+      },
+      {
+        "enabled": true,
+        "title": "Full Stack Developer & Solutions Architect",
+        "place": "Weborama Italia",
+        "placeUrl": "https://weborama.com/it/su-di-noi/",
+        "image": "/images/logo-weborama.jpg",
+        "timePeriod": "02/2022 - 04/2023",
+        "contentParagraphs": [
+          "Raccolta requisiti e allineamento con PM e clienti fino alla consegna della soluzione. Valutazione tecnologie e miglioramento continuo di infrastruttura e processi di sviluppo.",
+          "Stime tempi e costi. Supporto all'organizzazione dei flussi tra team.",
+          "Ambiti / stack: ETL / Data Analysis / ML (Python, MongoDB, Apache Spark, Pandas, AWS Step Functions, AWS Lambda, EMR); API (Python, MongoDB, AWS API Gateway, AWS Lambda); DevOps (Bash, Unix, Apache NiFi, Ansible, Node.js, Nginx, Git); Web (HTML, CSS, JavaScript, Ajax, Bootstrap, jQuery, Backbone.js)."
+        ]
+      },
+      {
+        "enabled": true,
+        "title": "Data Visualization Specialist",
+        "place": "Weborama Italia",
+        "placeUrl": "https://weborama.com/it/su-di-noi/",
+        "image": "/images/logo-weborama.jpg",
+        "timePeriod": "06/2020 - 02/2022",
+        "contentParagraphs": [
+          "Sviluppo dashboard e data product per analisi su big data.",
+          "Selezione framework e librerie per manutenibilità, personalizzazione e supporto community.",
+          "Introduzione di unit test automatici (Jest) e collaborazione con Data Engineering su flussi automatizzati."
+        ]
+      },
+      {
+        "enabled": true,
+        "title": "Front-end Developer & Rich Media Support",
+        "place": "Weborama Italia",
+        "placeUrl": "https://weborama.com/it/su-di-noi/",
+        "image": "/images/logo-weborama.jpg",
+        "timePeriod": "03/2015 - 06/2020",
+        "contentParagraphs": [
+          "Sviluppo formati statici e rich media, piattaforme e tool interni (HTML/CSS/JavaScript).",
+          "Supporto tecnico a clienti (Centri Media, Publisher, Agenzie creative). Editing di asset video e immagini per advertising online."
+        ]
+      }
     ]
   },
   "education": {
-    "enabled": true,
+    "enabled": false,
     "items": [
-    {
-      "enabled": true,
-      "title": "Laurea triennale in Informatica",
-      "place": "Università degli Studi di Palermo",
-      "placeUrl": "https://www.unipa.it/",
-      "image": "/images/logo-unipa.jpg",
-      "timePeriod": "09/2010 - 03/2015",
-      "contentParagraphs": [
-        "Voto: 93/110.",
-        "Tesi: Un tool per la progettazione Goal-Oriented a partire dall'ontologia del problema."
-      ]
-    }
+      {
+        "enabled": true,
+        "title": "Laurea triennale in Informatica",
+        "place": "Università degli Studi di Palermo",
+        "placeUrl": "https://www.unipa.it/",
+        "image": "/images/logo-unipa.jpg",
+        "timePeriod": "09/2010 - 03/2015",
+        "contentParagraphs": [
+          "Voto: 93/110.",
+          "Tesi: Un tool per la progettazione Goal-Oriented a partire dall'ontologia del problema."
+        ]
+      }
     ]
   },
   "portfolio": {
@@ -157,7 +157,12 @@
           "Pipeline più affidabile grazie a checkpoint, logging e diagnostica",
           "Processo eseguibile in cloud, indipendente dalla macchina del singolo operatore"
         ],
-        "tags": ["Google Ads", "BigQuery", "Automazione", "Cloud Run"],
+        "tags": [
+          "Google Ads",
+          "BigQuery",
+          "Automazione",
+          "Cloud Run"
+        ],
         "visual": "ads"
       },
       {
@@ -172,7 +177,12 @@
           "Meno dispersione tra fogli, email e strumenti separati",
           "Un sistema adattato al settore e ai flussi reali del team"
         ],
-        "tags": ["Frontend", "API", "Cloud", "Business Intelligence"],
+        "tags": [
+          "Frontend",
+          "API",
+          "Cloud",
+          "Business Intelligence"
+        ],
         "visual": "crm"
       },
       {
@@ -187,7 +197,12 @@
           "Analisi di documenti in pochi minuti, al posto di una lettura integrale",
           "Indicazioni e previsioni a supporto di chi deve scegliere"
         ],
-        "tags": ["AI", "Documenti", "Assistenti", "Previsioni"],
+        "tags": [
+          "AI",
+          "Documenti",
+          "Assistenti",
+          "Previsioni"
+        ],
         "visual": "ai"
       },
       {
@@ -202,7 +217,11 @@
           "Cruscotti interattivi per filtrare, confrontare e scendere nel dettaglio",
           "La stessa lettura per chi analizza e per chi decide"
         ],
-        "tags": ["Big data", "Dashboard", "Data Warehouse"],
+        "tags": [
+          "Big data",
+          "Dashboard",
+          "Data Warehouse"
+        ],
         "visual": "data"
       }
     ]
