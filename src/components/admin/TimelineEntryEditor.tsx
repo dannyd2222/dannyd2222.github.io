@@ -5,6 +5,8 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
@@ -13,7 +15,9 @@ import type { TimelineEntry } from "../../lib/profileTypes";
 type Props = {
   label: string;
   entries: TimelineEntry[];
+  enabled: boolean;
   onChange: (next: TimelineEntry[]) => void;
+  onEnabledChange: (enabled: boolean) => void;
   onAdd: () => void;
 };
 
@@ -30,7 +34,9 @@ function updateEntry(
 export default function TimelineEntryEditor({
   label,
   entries,
+  enabled,
   onChange,
+  onEnabledChange,
   onAdd,
 }: Props) {
   const move = (index: number, direction: -1 | 1) => {
@@ -43,6 +49,15 @@ export default function TimelineEntryEditor({
 
   return (
     <Box>
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={enabled}
+            onChange={(event) => onEnabledChange(event.target.checked)}
+          />
+        }
+        label="Mostra sezione"
+      />
       {entries.map((entry, index) => (
         <Paper key={`${label}-${index}`} variant="outlined" sx={{ p: 2, mb: 2 }}>
           <Box
@@ -54,12 +69,28 @@ export default function TimelineEntryEditor({
             <Typography variant="subtitle1" fontWeight={600}>
               {label} #{index + 1}
             </Typography>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={entry.enabled}
+                  disabled={!enabled}
+                  onChange={(event) =>
+                    onChange(
+                      updateEntry(entries, index, {
+                        enabled: event.target.checked,
+                      })
+                    )
+                  }
+                />
+              }
+              label="Mostra"
+            />
             <Box>
               <IconButton
                 size="small"
                 aria-label="Sposta su"
                 onClick={() => move(index, -1)}
-                disabled={index === 0}
+                disabled={!enabled || index === 0}
               >
                 <ArrowUpwardIcon fontSize="small" />
               </IconButton>
@@ -67,7 +98,7 @@ export default function TimelineEntryEditor({
                 size="small"
                 aria-label="Sposta giù"
                 onClick={() => move(index, 1)}
-                disabled={index === entries.length - 1}
+                disabled={!enabled || index === entries.length - 1}
               >
                 <ArrowDownwardIcon fontSize="small" />
               </IconButton>
@@ -75,13 +106,14 @@ export default function TimelineEntryEditor({
                 size="small"
                 aria-label="Elimina voce"
                 onClick={() => onChange(entries.filter((_, i) => i !== index))}
+                disabled={!enabled}
               >
                 <DeleteOutlineIcon fontSize="small" />
               </IconButton>
             </Box>
           </Box>
 
-          <Box display="flex" flexDirection="column" gap={2}>
+          <Box display="flex" flexDirection="column" gap={2} sx={{ opacity: !enabled || !entry.enabled ? 0.55 : 1 }}>
             <TextField
               label="Titolo"
               value={entry.title}
@@ -90,6 +122,7 @@ export default function TimelineEntryEditor({
               }
               fullWidth
               size="small"
+              disabled={!enabled || !entry.enabled}
             />
             <TextField
               label="Organizzazione / istituto"
@@ -99,6 +132,7 @@ export default function TimelineEntryEditor({
               }
               fullWidth
               size="small"
+              disabled={!enabled || !entry.enabled}
             />
             <TextField
               label="URL organizzazione"
@@ -110,6 +144,7 @@ export default function TimelineEntryEditor({
               }
               fullWidth
               size="small"
+              disabled={!enabled || !entry.enabled}
             />
             <TextField
               label="Percorso immagine (es. /images/logo.png)"
@@ -119,6 +154,7 @@ export default function TimelineEntryEditor({
               }
               fullWidth
               size="small"
+              disabled={!enabled || !entry.enabled}
             />
             <TextField
               label="Periodo"
@@ -130,6 +166,7 @@ export default function TimelineEntryEditor({
               }
               fullWidth
               size="small"
+              disabled={!enabled || !entry.enabled}
             />
 
             <Typography variant="subtitle2">Paragrafi</Typography>
@@ -151,9 +188,11 @@ export default function TimelineEntryEditor({
                   multiline
                   minRows={2}
                   size="small"
+                  disabled={!enabled || !entry.enabled}
                 />
                 <IconButton
                   aria-label="Elimina paragrafo"
+                  disabled={!enabled || !entry.enabled}
                   onClick={() => {
                     const paragraphs = entry.contentParagraphs.filter(
                       (_, i) => i !== pIndex
@@ -172,6 +211,7 @@ export default function TimelineEntryEditor({
             ))}
             <Button
               size="small"
+              disabled={!enabled || !entry.enabled}
               onClick={() =>
                 onChange(
                   updateEntry(entries, index, {
@@ -186,7 +226,7 @@ export default function TimelineEntryEditor({
         </Paper>
       ))}
 
-      <Button variant="outlined" onClick={onAdd}>
+      <Button variant="outlined" onClick={onAdd} disabled={!enabled}>
         Aggiungi voce
       </Button>
     </Box>

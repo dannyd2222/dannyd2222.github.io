@@ -14,6 +14,7 @@ import AppBar from "../../components/Appbar";
 import Copyright from "../../components/Copyright";
 import TechStaffEditor from "../../components/admin/TechStaffEditor";
 import TimelineEntryEditor from "../../components/admin/TimelineEntryEditor";
+import PortfolioEditor from "../../components/admin/PortfolioEditor";
 import {
   fetchEditableProfile,
   fetchMe,
@@ -22,7 +23,11 @@ import {
 import { clearToken, isAdminApiConfigured } from "../../lib/adminAuth";
 import {
   emptyTimelineEntry,
+  emptyPortfolioService,
+  normalizeSection,
+  validatePortfolioServices,
   type EditableProfile,
+  type PortfolioService,
   type TimelineEntry,
 } from "../../lib/profileTypes";
 
@@ -35,6 +40,7 @@ function normalizeParagraphs(raw: unknown): string[] {
 
 function normalizeEntry(raw: Record<string, unknown>): TimelineEntry {
   return {
+    enabled: typeof raw.enabled === "boolean" ? raw.enabled : true,
     title: typeof raw.title === "string" ? raw.title : "",
     place: typeof raw.place === "string" ? raw.place : "",
     placeUrl: typeof raw.placeUrl === "string" ? raw.placeUrl : "",
@@ -45,21 +51,54 @@ function normalizeEntry(raw: Record<string, unknown>): TimelineEntry {
 }
 
 function normalizeProfile(data: EditableProfile): EditableProfile {
+  const raw = data as unknown as Record<string, unknown>;
+  const experience = normalizeSection<Record<string, unknown>>(
+    raw.experience as Record<string, unknown>[] | undefined
+  );
+  const education = normalizeSection<Record<string, unknown>>(
+    raw.education as Record<string, unknown>[] | undefined
+  );
+  const portfolio = normalizeSection<PortfolioService>(
+    raw.portfolio as PortfolioService[] | EditableProfile["portfolio"] | undefined
+  );
   return {
     techStaff: Array.isArray(data.techStaff)
       ? data.techStaff.filter((s) => typeof s === "string")
       : [],
-    experience: Array.isArray(data.experience)
-      ? data.experience.map((e) =>
-          normalizeEntry(e as Record<string, unknown>)
-        )
-      : [],
-    education: Array.isArray(data.education)
-      ? data.education.map((e) =>
-          normalizeEntry(e as Record<string, unknown>)
-        )
-      : [],
+    experience: {
+      enabled: experience.enabled,
+      items: experience.items.map((e) => normalizeEntry(e)),
+    },
+    education: {
+      enabled: education.enabled,
+      items: education.items.map((e) => normalizeEntry(e)),
+    },
+    portfolio: {
+      enabled: portfolio.enabled,
+      items: portfolio.items.map((item) => ({
+        ...item,
+        enabled: typeof item.enabled === "boolean" ? item.enabled : true,
+        outcomes: Array.isArray(item.outcomes) ? item.outcomes : [],
+        tags: Array.isArray(item.tags) ? item.tags : [],
+      })),
+    },
   };
+}
+
+function createPortfolioId(title: string, existing: PortfolioService[]) {
+  const base =
+    title
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "") || "progetto";
+  let id = base;
+  let suffix = 2;
+  while (existing.some((service) => service.id === id)) {
+    id = `${base}-${suffix++}`;
+  }
+  return id;
 }
 
 export default function AdminPage() {
@@ -117,19 +156,44 @@ export default function AdminPage() {
     try {
       const cleaned: EditableProfile = {
         techStaff: profile.techStaff.map((s) => s.trim()).filter(Boolean),
-        experience: profile.experience.map((entry) => ({
-          ...entry,
-          contentParagraphs: entry.contentParagraphs
-            .map((p) => p.trim())
-            .filter(Boolean),
-        })),
-        education: profile.education.map((entry) => ({
-          ...entry,
-          contentParagraphs: entry.contentParagraphs
-            .map((p) => p.trim())
-            .filter(Boolean),
-        })),
+        experience: {
+          enabled: profile.experience.enabled,
+          items: profile.experience.items.map((entry) => ({
+            ...entry,
+            contentParagraphs: entry.contentParagraphs
+              .map((p) => p.trim())
+              .filter(Boolean),
+          })),
+        },
+        education: {
+          enabled: profile.education.enabled,
+          items: profile.education.items.map((entry) => ({
+            ...entry,
+            contentParagraphs: entry.contentParagraphs
+              .map((p) => p.trim())
+              .filter(Boolean),
+          })),
+        },
+        portfolio: {
+          enabled: profile.portfolio.enabled,
+          items: profile.portfolio.items.map((service) => ({
+            ...service,
+            outcomes: service.outcomes.map((item) => item.trim()).filter(Boolean),
+            tags: service.tags.map((item) => item.trim()).filter(Boolean),
+            ...(service.image?.src.trim()
+              ? { image: { src: service.image.src.trim(), alt: service.image.alt.trim() } }
+              : { image: undefined }),
+            ...(service.href?.trim()
+              ? { href: service.href.trim() }
+              : { href: undefined }),
+            ...(service.hrefLabel?.trim()
+              ? { hrefLabel: service.hrefLabel.trim() }
+              : { hrefLabel: undefined }),
+          })),
+        },
       };
+      const portfolioError = validatePortfolioServices(cleaned.portfolio.items);
+      if (portfolioError) throw new Error(portfolioError);
       const saved = await saveEditableProfile(cleaned);
       setProfile(normalizeProfile(saved));
       setSuccess(
@@ -167,7 +231,7 @@ export default function AdminPage() {
               Modifica profilo
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
-              Competenze, esperienze lavorative e istruzione
+              Competenze, esperienze, istruzione e portfolio
             </Typography>
           </div>
           <Box display="flex" gap={1}>
@@ -209,6 +273,7 @@ export default function AdminPage() {
               <Tab label="Competenze" />
               <Tab label="Esperienze" />
               <Tab label="Istruzione" />
+              <Tab label="Portfolio" />
             </Tabs>
 
             {tab === 0 ? (
@@ -223,14 +288,27 @@ export default function AdminPage() {
             {tab === 1 ? (
               <TimelineEntryEditor
                 label="Esperienza"
-                entries={profile.experience}
+                entries={profile.experience.items}
+                enabled={profile.experience.enabled}
                 onChange={(experience) =>
-                  setProfile({ ...profile, experience })
+                  setProfile({
+                    ...profile,
+                    experience: { ...profile.experience, items: experience },
+                  })
+                }
+                onEnabledChange={(enabled) =>
+                  setProfile({
+                    ...profile,
+                    experience: { ...profile.experience, enabled },
+                  })
                 }
                 onAdd={() =>
                   setProfile({
                     ...profile,
-                    experience: [...profile.experience, emptyTimelineEntry()],
+                    experience: {
+                      ...profile.experience,
+                      items: [...profile.experience.items, emptyTimelineEntry()],
+                    },
                   })
                 }
               />
@@ -239,16 +317,63 @@ export default function AdminPage() {
             {tab === 2 ? (
               <TimelineEntryEditor
                 label="Istruzione"
-                entries={profile.education}
+                entries={profile.education.items}
+                enabled={profile.education.enabled}
                 onChange={(education) =>
-                  setProfile({ ...profile, education })
+                  setProfile({
+                    ...profile,
+                    education: { ...profile.education, items: education },
+                  })
+                }
+                onEnabledChange={(enabled) =>
+                  setProfile({
+                    ...profile,
+                    education: { ...profile.education, enabled },
+                  })
                 }
                 onAdd={() =>
                   setProfile({
                     ...profile,
-                    education: [...profile.education, emptyTimelineEntry()],
+                    education: {
+                      ...profile.education,
+                      items: [...profile.education.items, emptyTimelineEntry()],
+                    },
                   })
                 }
+              />
+            ) : null}
+            {tab === 3 ? (
+              <PortfolioEditor
+                enabled={profile.portfolio.enabled}
+                services={profile.portfolio.items}
+                onChange={(items) =>
+                  setProfile({
+                    ...profile,
+                    portfolio: { ...profile.portfolio, items },
+                  })
+                }
+                onEnabledChange={(enabled) =>
+                  setProfile({
+                    ...profile,
+                    portfolio: { ...profile.portfolio, enabled },
+                  })
+                }
+                onAdd={() => {
+                  const id = createPortfolioId(
+                    "Nuovo progetto",
+                    profile.portfolio.items
+                  );
+                  setProfile({
+                    ...profile,
+                    portfolio: {
+                      ...profile.portfolio,
+                      items: [
+                        ...profile.portfolio.items,
+                        emptyPortfolioService(id),
+                      ],
+                    },
+                  });
+                }}
               />
             ) : null}
           </Paper>

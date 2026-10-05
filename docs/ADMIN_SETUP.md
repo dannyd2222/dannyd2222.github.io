@@ -153,10 +153,20 @@ Aggiungi `http://localhost:3000` in `ALLOWED_ORIGINS` su Vercel se non c’è gi
 
 1. Vai su `https://dannyd2222.github.io/login` (o `/login` in locale).
 2. **Accedi con GitHub** con l’account indicato in `GITHUB_ALLOWED_LOGIN`.
-3. Modifica **Competenze**, **Esperienze**, **Istruzione** in `/admin`.
+3. Modifica **Competenze**, **Esperienze**, **Istruzione** e **Portfolio** in `/admin`.
 4. **Salva su GitHub** → commit su `src/data.json` → Actions deploy → sito aggiornato in pochi minuti.
 
 La sessione è un JWT in `sessionStorage` (si chiude con la scheda del browser). **Esci** rimuove il token.
+
+### Sezioni e progetti
+
+Esperienze, istruzione e portfolio sono salvati in `src/data.json` come `{ "enabled": true, "items": [...] }`. Ogni voce ha a sua volta `enabled: true|false`: disattivare una sezione o una voce la nasconde dal sito senza cancellarne i dati. Le competenze restano una semplice lista.
+
+Il portfolio contiene `id`, `eyebrow`, `title`, `summary`, `description`, `outcomes` e `tags`; ogni progetto può inoltre avere un `href` HTTPS/HTTP e scegliere una sola modalità media: `visual` (mockup MUI esistente), `image` (con `src` e testo alternativo `alt`) oppure nessun media. I progetti possono essere aggiunti, eliminati e riordinati dall’editor. I dati precedenti in cui esperienze e istruzione erano array vengono letti come sezioni abilitate e le voci senza flag vengono considerate abilitate.
+
+Per introdurre un nuovo visual, implementare la scena e la caption in `src/components/portfolio/ServiceVisual.tsx`, poi aggiungere il valore alla costante `PORTFOLIO_VISUALS` in `src/lib/profileTypes.ts` e all’elenco mantenuto in `services/profile-api/api/profile.ts`. La lista API deve restare allineata a quella frontend.
+
+Per provare localmente, impostare `NEXT_PUBLIC_PROFILE_API_URL` nel file `.env.local` (vedi `.env.local.example`) e avviare `npm run dev`. L’API configurata deve consentire l’origine `http://localhost:3000`.
 
 ---
 
@@ -202,4 +212,7 @@ La sessione è un JWT in `sessionStorage` (si chiude con la scheda del browser).
 | `src/pages/login.tsx` | Ingresso OAuth |
 | `src/pages/auth/callback.tsx` | Ricezione token |
 | `src/pages/admin/index.tsx` | Editor |
+| `src/components/admin/PortfolioEditor.tsx` | Editor dei progetti portfolio |
+| `src/components/portfolio/ServiceVisual.tsx` | Scene e caption dei visual |
+| `src/lib/profileTypes.ts` | Tipi, normalizzazione e lista visual condivisa col frontend |
 | `src/data.json` | Source of truth committata dalla API |

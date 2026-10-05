@@ -144,9 +144,19 @@ You can still deploy manually by copying `build/` if you prefer not to use Actio
 
 ## Admin (modifica profilo)
 
-Competenze, esperienze e istruzione si modificano dall’area admin (`/login` → `/admin`) con autenticazione GitHub. Il sito resta statico su Pages; la persistenza avviene via API Vercel che committa `src/data.json`.
+Competenze, esperienze, istruzione e portfolio si modificano dall’area admin (`/login` → `/admin`) con autenticazione GitHub. Il sito resta statico su Pages; la persistenza avviene via API Vercel che committa `src/data.json`.
 
 **Setup completo (OAuth, Vercel, secrets GitHub):** [docs/ADMIN_SETUP.md](docs/ADMIN_SETUP.md).
+
+### Struttura dei contenuti modificabili
+
+`techStaff` resta un array di competenze. Esperienze, istruzione e portfolio usano ciascuno una sezione `{ "enabled": true, "items": [...] }`; ogni voce ha il proprio flag `enabled`. Un flag disattivato nasconde la sezione o la voce senza rimuovere i dati. Le vecchie strutture di esperienze e istruzione (array senza flag) sono lette con default abilitato.
+
+Ogni progetto del portfolio include `id`, `eyebrow`, `title`, `summary`, `description`, `outcomes` e `tags`. Per il media può indicare un solo `visual`, un oggetto `image` con `src` e `alt` obbligatorio, oppure nessuno dei due (card di solo testo). `href`, se presente, deve essere un URL `http` o `https`. Le immagini possono usare un URL o un percorso sotto `public/` (ad esempio `/images/progetto.jpg`); il rendering resta compatibile con l’export statico.
+
+I visual disponibili sono definiti da `PORTFOLIO_VISUALS` in `src/lib/profileTypes.ts`. Per aggiungerne uno, creare la relativa scena e caption in `src/components/portfolio/ServiceVisual.tsx` e aggiungere il valore alla costante condivisa e alla lista corrispondente in `services/profile-api/api/profile.ts` (che va mantenuta allineata).
+
+Per provare l’admin in locale, impostare `NEXT_PUBLIC_PROFILE_API_URL=https://<url-vercel>` in `.env.local` e avviare `npm run dev`. L’API Vercel deve includere `http://localhost:3000` in `ALLOWED_ORIGINS`.
 
 ## Author
 

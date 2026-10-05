@@ -10,6 +10,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import LoginIcon from "@mui/icons-material/Login";
 import GridViewIcon from "@mui/icons-material/GridView";
 import settings from "../data.json";
+import { portfolioSectionEnabled, portfolioServices } from "../data/portfolio";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -29,12 +30,14 @@ export default function ApplicationBar({ onClose = () => {} }) {
           </ListSubheader>
         }
       >
-        <ListItem button component={NextLink} href="/portfolio" onClick={onClose}>
-          <ListItemIcon>
-            <GridViewIcon />
-          </ListItemIcon>
-          <ListItemText primary="Portfolio" />
-        </ListItem>
+        {portfolioSectionEnabled && portfolioServices.length > 0 ? (
+          <ListItem button component={NextLink} href="/portfolio" onClick={onClose}>
+            <ListItemIcon>
+              <GridViewIcon />
+            </ListItemIcon>
+            <ListItemText primary="Portfolio" />
+          </ListItem>
+        ) : null}
         <ListItem button>
           <ListItemIcon>
             <LoginIcon />

@@ -8,7 +8,10 @@ import AppBar from "../components/Appbar";
 import Copyright from "../components/Copyright";
 import MotionSection from "../components/MotionSection";
 import PortfolioEntry from "../components/portfolio/PortfolioEntry";
-import { portfolioServices } from "../data/portfolio";
+import {
+  portfolioSectionEnabled,
+  portfolioServices,
+} from "../data/portfolio";
 
 export default function PortfolioPage() {
   return (
@@ -22,6 +25,8 @@ export default function PortfolioPage() {
       </Head>
       <AppBar parent="/" />
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
+        {portfolioSectionEnabled && portfolioServices.length > 0 ? (
+          <>
         <Box sx={{ pt: { xs: 3, sm: 5 }, pb: { xs: 1, sm: 2 } }}>
           <MotionSection>
             <Box>
@@ -102,6 +107,12 @@ export default function PortfolioPage() {
         <MotionSection delay={0.08}>
           <Copyright />
         </MotionSection>
+          </>
+        ) : (
+          <Typography color="text.secondary" sx={{ py: 8, textAlign: "center" }}>
+            Questa sezione non è attualmente disponibile.
+          </Typography>
+        )}
       </Container>
     </Box>
   );
